@@ -23,7 +23,7 @@ module.exports = {
 
 		});
 
-		Appt.find({ endsAt : { $lt: Date.now() }, status : 'booked' }).exec().then(function(result) {
+		Appt.find({ startsAt : { $lt: Date.now() }, status : 'booked' }).exec().then(function(result) {
 			
 			for (var k = 0; k < result.length; k++) {
 				
