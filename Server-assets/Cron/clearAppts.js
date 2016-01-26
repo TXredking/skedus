@@ -1,11 +1,9 @@
 var Org = require('../Models/orgSchema.js'),
 	User = require('../Models/userSchema.js'),
-	Appt = require('../Models/userSchema.js');
+	Appt = require('../Models/apptSchema.js');
 
 //searches at midnight
-module.exports = {
-	changeStatus : function() {
-				console.log('appointment loggin1');	
+
 		Appt.find({ endsAt : { $lt: Date.now() }, status : 'open' }).exec().then(function(result) {
 				console.log('appointment loggin2');
 			
@@ -32,9 +30,6 @@ module.exports = {
 			}
 
 		});
-	}
-
-}
 
 
 

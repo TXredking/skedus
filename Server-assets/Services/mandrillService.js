@@ -191,7 +191,7 @@ apptCancelMentee : function(appt, mentee, mentor) {
   console.log("No not there, it's here");
   var message = {
     "html": "",
-    "text": "Hello " + mentee.firstName + ", your meeting with " + mentor.firstName + " " + mentor.lastName + " has been booked for " + appt.startsAt + " has been cancelled.",
+    "text": "Hello " + mentee.firstName + ", your meeting with " + mentor.firstName + " " + mentor.lastName + " for " + appt.startsAt + " has been cancelled.",
     "subject": "Sked Meeting Booked",
     "from_email": "info@sked.us",
     "from_name": "Sked Meetings",

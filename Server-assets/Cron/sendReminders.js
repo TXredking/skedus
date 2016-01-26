@@ -1,15 +1,16 @@
 var User = require('../Models/userSchema.js'),
-	Appt = require('../Models/userSchema.js'),
+	Appt = require('../Models/apptSchema.js'),
 	mandrillService = require('../Services/mandrillService');
 
 
 
 //sends at midnight
-module.exports = {
-	
-	reminder : function() {
-			console.log("reminder loggin1");
-		Appt.find({ startsAt : { $lt : (Date.now() + 86400000 )}, status : 'booked' }).exec().then(function(results) {
+var myDate = new Date();
+
+//add a day to the date
+myDate.setDate(myDate.getDate() + 1);
+
+		Appt.find({ startsAt : { $lt : myDate }, status : 'booked' }).exec().then(function(results) {
 			console.log("reminder loggin2");
 
 				for (var i = 0; i < results.length; i++) {
@@ -20,7 +21,4 @@ module.exports = {
 					})
 				}
 
-			}) 
-	}
-
-}
+			})

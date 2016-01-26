@@ -55,15 +55,9 @@ module.exports = {
 
 // api/apt/:orgID/open // GET
   getOrgAppts: function(req, res){
-
-    clearAppts.changeStatus().then(function() {
-      Appt.find({org: req.params.orgID}).sort({startTime: 1}).populate("mentor").exec().then(function(results){
-            res.json(results);
-          });
-      
+    Appt.find({org: req.params.orgID}).sort({startTime: 1}).populate("mentor").exec().then(function(results){
+      res.json(results);
     });
-
-    
   },
 
 // api/apt/:aptID // PUT
