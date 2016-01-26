@@ -4,7 +4,7 @@ var Org = require('../Models/orgSchema.js'),
 
 //searches at midnight
 
-		Appt.find({ endsAt : { $lt: Date.now() }, status : 'open' }).exec().then(function(result) {
+		Appt.find({ startsAt : { $lt: Date.now() }, status : 'open' }).exec().then(function(result) {
 				console.log('appointment loggin2');
 			
 			for (var i = 0; i < result.length; i++) {
@@ -20,7 +20,7 @@ var Org = require('../Models/orgSchema.js'),
 
 		});
 
-		Appt.find({ endsAt : { $lt: Date.now() }, status : 'booked' }).exec().then(function(result) {
+		Appt.find({ startsAt : { $lt: Date.now() }, status : 'booked' }).exec().then(function(result) {
 			
 			for (var k = 0; k < result.length; k++) {
 				
