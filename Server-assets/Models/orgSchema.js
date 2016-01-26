@@ -13,7 +13,7 @@ var orgSchema = new Schema({
   apts: [{type: String, ref: "Appt"}],
   desc: {type: String},
   add1: {type: String},
-  add2: {type: String},
+  add2: {type: String, default: ""},
   city: {type: String},
   st: {type: String},
   zip: {type: String},

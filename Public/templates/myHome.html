@@ -7,7 +7,7 @@
 	</div>
 
 	<div ng-show="calendarMode" class="">
-		<calendar-directive apt="myMenteeBookedApts"></calendar-directive>
+		<calendar-directive apt="allMyApts" updated="getAllMyApts()"></calendar-directive>
 		<!-- <circle-spinner></circle-spinner> -->
 	</div>
 
@@ -17,19 +17,19 @@
 			<div class="panel-heading"><h1>My Appointments</h1></div>
 			<div class="panel-body">
 				<div class="table-responsive">
-					<table class="table">
+					<table class="table table-hover table-striped">
 						<tr>
 							<th>Title</th>
 							<th>Day</th>
 							<th>Start Time</th>
 							<th>End Time</th>
-							<th>Org</th>
-							<th>Mentor</th>
+							<th>Organization</th>
+							<th>Host</th>
 							<th>Location</th>
 							<th> </th>
 							<th> </th>
 						</tr>
-						<tr ng-repeat="apt in myMenteeBookedApts">
+						<tr ng-repeat="apt in allMyApts">
 							<td><h5>{{apt.title}}</h5></td>
 							<td><h5>{{apt.startsAt | date: "EEEE - M/d/yy"}}</h5></td>
 							<td><h5>{{apt.startsAt | date: "shortTime"}}</h5></td>
@@ -45,28 +45,5 @@
 			</div>
 		</div>
 	</div>
-<a href=""></a>
-		<br>
-		<div class="panel panel-info">
-			<div class="panel-heading"><h1>My Organizations</h1></div>
-			<div class="panel-body">
-				<div class="table-responsive">
-					<table class="table">
-						<tr>
-							<th>Org</th>
-							<th>Location</th>
-							<th> </th>
-						</tr>
-						<tr ng-repeat="org in myOrgs" ng-if="org.org.status === 'Active'">
-							<td>{{org.org.name}}</td>
-							<td>{{org.org.add1}} {{org.org.add2}} {{org.org.city}} {{org.org.st}} {{org.org.zip}}</td>
-							<td><button class="btn btn-info" ng-click="showOrgInfo(org.org)">Info</button></td>
-							<td><button class="btn btn-danger" ng-click="leaveOrg(org)">Leave</button></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-
 	</div>
 </div>

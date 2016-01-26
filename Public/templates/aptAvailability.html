@@ -1,26 +1,43 @@
 <div class="container-fluid">
-    <div class='col-sm-6'>
-    	<form>
-            <div class="form-group">
-              <input type="text" ng-model="newApt.title" class="form-control" placeholder="Meeting title...">
-        		</div>
-            <div class="form-group">
-              <input ng-model="newApt.loc" class="form-control" placeholder="Location...">
+    <div class="my-orgs-contain">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h1>Create Appointment</h1></div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                      <input type="text" ng-model="newApt.title" class="form-control" placeholder="Meeting title...">
+                        </div>
+                    <div class="form-group">
+                      <input ng-model="newApt.loc" class="form-control" placeholder="Location...">
+                    </div>
+                    <div class=' form-group input-group date' id='datetimepicker6'>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        <input ng-model="newApt.startsAt" class="form-control" placeholder="Start Time"/>
+                    </div>
+                   <!--  <div class=' form-group'>
+                        <select ng-model="newApt.endsAt" ng-init="newApt.endsAt = aptDurations[0]" ng-options="duration for duration in aptDurations" class="form-control" placeholder="Appointment Duration"></select>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="15 Minutes" > 15 Minutes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="30 Minutes"> 30 Minutes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="45 Minutes"> 45 Minutes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="1 Hour"> 1 Hour
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class=" btn btn-primary login-button" type="submit" ng-click="createApt(newApt, $state.params.id, user._id)">Create Apt</button>
+                    </div>
+                </form>
             </div>
-            <div class=' form-group input-group date' id='datetimepicker6'>
-                <input ng-model="newApt.startsAt" class="form-control" placeholder="Start Time"/>
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-            <div class=' form-group'>
-                <select ng-model="newApt.endsAt" ng-init="newApt.endsAt = aptDurations[0]" ng-options="duration for duration in aptDurations" class="form-control" placeholder="Appointment Duration"></select>
-            </div>
-			<div class="form-group">
-	            <button class=" btn btn-primary login-button" type="submit" ng-click="createApt(newApt, $state.params.id, user._id)">Create Apt</button>
-	        </div>
-    	</form>
-    </div>
-    <div class="col-md-6">
-        <div class="panel panel-default">
+        </div>
+        <div class="panel panel-info">
             <div class="panel-heading"><h1>My Open Apts</h1></div>
             <table class="table">
                 <tr>

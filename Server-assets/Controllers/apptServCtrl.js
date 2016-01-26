@@ -39,9 +39,15 @@ module.exports = {
     })
   },
 
-// api/apt/:orgID/mentor/:userID/booked // GET
+// api/apt/all/:userID/booked // GET  //for all booked appointments per user
   getMyMentorBookedAppts: function(req, res){
-    Appt.find({mentor: req.params.userID}).find({org: req.params.orgID}).find({status: "booked"}).sort({startTime: 1}).exec().then(function(results){
+    Appt.find( {$or: [{mentor: req.params.userID}, {mentee: req.params.userID}]})
+    .find({status: "booked"})
+    .sort({startTime: 1})
+    .populate("org")
+    .populate("mentor")
+    .populate("mentee")
+    .exec().then(function(results){
       res.json(results);
     });
   },

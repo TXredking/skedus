@@ -1,7 +1,13 @@
 <div class="container-fluid">
 	<div class="my-orgs-contain">
-	<br>
-		<div class="panel panel-primary">
+		<br>
+		<div class="btn-group">
+			<button class="btn btn-primary" ui-sref="auth.joinOrg">Join Organization</button>
+			<button class="btn btn-primary" ui-sref="auth.createOrg">Create Organization</button>
+		</div>
+		<br>
+		<br>
+		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h2>My Profile</h2>
 			</div>
@@ -19,7 +25,7 @@
 				<button class="btn btn-danger" ng-click="deactivateUser(user._id)">Deactivate Account</button>
 			</div>
 		</div>
-		<div ng-show="showEdit" class="panel panel-primary">
+		<div ng-show="showEdit" class="panel panel-info">
 			<div class="panel-heading">
 				<h2>Update Profile Here</h2>
 			</div>
@@ -47,6 +53,26 @@
 						<button class=" btn btn-primary login-button" type="submit" ng-click="updateUser(userUpdates); showEdit = !showEdit">Save Changes</button>
 					</div>
 				</form>
+			</div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading"><h1>My Organizations</h1></div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<th>Org</th>
+							<th>Location</th>
+							<th> </th>
+						</tr>
+						<tr ng-repeat="org in myOrgs" ng-if="org.org.status === 'Active'">
+							<td>{{org.org.name}}</td>
+							<td>{{org.org.add1}} {{org.org.add2}} {{org.org.city}} {{org.org.st}} {{org.org.zip}}</td>
+							<td><button class="btn btn-info" ng-click="showOrgInfo(org.org)">Info</button></td>
+							<td><button class="btn btn-danger" ng-click="leaveOrg(org)">Leave</button></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

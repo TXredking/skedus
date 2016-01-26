@@ -2,7 +2,8 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
   return {
     restrict: 'E',
     scope: {
-      apt: "="
+      apt: "=",
+      updated: "&"
     },
     templateUrl: '/templates/calendarDirective.html',
     // link: function(scope, elem, attrs) {
@@ -10,8 +11,11 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
       //   scope.$emit('toggleCalendarLoaded', 1);
       // });
     // },
-    controller: function($scope, mainService) {
+    controller: function($scope, mainService, $state) {
 
+      // console.log("user", $scope.$parent.$parent.user);
+      // console.log("scope", $scope);
+      
       // $scope.getMyMenteeBookedApts = function(userID){
     	// 	mainService.getMyMenteeBookedApts(userID).then(function(results){
       //     for (var i = 0; i < results.length; i++) {
@@ -33,10 +37,9 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
       $scope.calendarView = 'month';
       $scope.viewDate = new Date();
 
-      // $scope.getEvents = mainService.getMyMenteeBookedApts();
-
+      //calendar edit and delete icons
       // $scope.enableEdit = '<i class=\'glyphicon glyphicon-pencil\'></i>';
-      // $scope.enableDel = '<i class=\'glyphicon glyphicon-remove\'></i>';
+      $scope.enableDel = '<i class=\'glyphicon glyphicon-remove\'></i>';
 
       // $scope.events = [
       // {
@@ -99,9 +102,25 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
 
       $scope.eventDeleted = function(event) {
         swal({
-          title: 'Deleted',
-          text: event
-        });
+    			title: "Are you sure you want to Cancel Appointment?",
+    			type: "warning",
+    			showCancelButton: true,
+    			confirmButtonColor: "#DD6B55",
+    			confirmButtonText: "Yes",
+    			cancelButtonText: "No, I want to keep it!",
+    			allowEscapeKey: true,
+    			allowOutsideClick: true,
+    		}, function(isConfirm){
+    			if(isConfirm){
+            // console.log("event", event);
+    				mainService.cancelApt(event._id).then(function(){
+              $scope.updated($scope.$parent.$parent.user);
+    					// $scope.getAllMyApts($scope.$parent.$parent.user);
+    					$state.reload(true);
+              // console.log('reload');
+    				});
+    			};
+    		});
       };
 
       $scope.eventTimesChanged = function(event) {

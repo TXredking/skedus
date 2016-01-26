@@ -10,7 +10,9 @@ var Org = require('../Models/orgSchema.js'),
 			for (var i = 0; i < result.length; i++) {
 				
 				if (result[i].status === 'open') {
+					console.log("result[i], ", result[i].status);
 					result[i].status = 'past';
+					console.log("result[i], ", result[i].status);
 				}
 
 				result[i].save();

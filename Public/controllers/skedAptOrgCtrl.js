@@ -12,6 +12,7 @@ angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, 
 
 	$scope.getOrgOpenApts = function(orgID){
 		skedAptService.getOrgOpenApts(orgID).then(function(results){
+			console.log("results", results)
 			$scope.orgApts = results;
 		});
 	};
@@ -32,9 +33,8 @@ angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, 
 				allowOutsideClick: true,
 				timer: 3000,
 			});
-			console.log("here");
 			$scope.getOrgOpenApts($state.params.id);
-			$scope.getMyMenteeBookedApts($scope.user._id);
+			$scope.getAllMyApts($scope.user._id);
 		});
 	};
 

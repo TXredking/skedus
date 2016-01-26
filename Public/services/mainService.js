@@ -70,21 +70,48 @@ angular.module("skedApp").service("mainService", function($http, $q){
 		return dfd.promise;
 	};
 
-	//gets any appointments the mentee has booked
-	this.getMyMenteeBookedApts = function(userID){
+	//gets any appointments the user has booked
+	this.getMyBookedApts = function(userID){
 		var dfd = $q.defer();
 		$http({
 			method: "GET",
-			url: "/api/apt/" + userID + "/booked",
+			url: "/api/apt/all/" + userID + "/booked",
 		}).then(function(results){
 			console.log("service results:", results.data);
 			console.log("user:", userID);
 			for (var i = 0; i < results.data.length; i++) {
 				if (results.data[i].mentor._id === userID) {
 					results.data[i].type = "important";
+					results.data[i].deletable = true;
+				}
+				else {
+					results.data[i].type = "info";
+					results.data[i].deletable = true;
+				}
+			}
+			// console.log("mentorbookApt",results);
+			dfd.resolve(results.data);
+		});
+		return dfd.promise;
+	};
+
+	//gets any appointments the user has booked
+	this.getMyMenteeBookedApts = function(userID){
+		var dfd = $q.defer();
+		$http({
+			method: "GET",
+			url: "/api/apt/" + userID + "/booked",
+		}).then(function(results){
+			// console.log("service results:", results.data);
+			// console.log("user:", userID);
+			for (var i = 0; i < results.data.length; i++) {
+				if (results.data[i].mentor._id === userID) {
+					results.data[i].type = "important";
+					// results.data[i].deletable = true;
 				}
 				// else {
 				// 	results.data[i].type = "info";
+				// 	results.data[i].deletable = true;
 				// }
 			}
 			dfd.resolve(results.data);

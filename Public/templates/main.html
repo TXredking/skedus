@@ -5,7 +5,7 @@
 
 	<div class="mainMenuSettings">
 		<ul class="nav nav-sidebar">
-			<li ui-sref-active="active" ui-sref="auth.myHome({myHome:myHome})" class="menuItemSelected"><a>My sked</a></li>
+			<li ui-sref-active="active" ui-sref="auth.myHome({myHome:myHome})" class="menuItemSelected" ng-click="getAllMyApts(user._id)"><a>My sked</a></li>
 			<hr id="menuSplit">
 
 			<div id="navSidebarMenuItems">
@@ -30,8 +30,7 @@
 
 			<hr id="menuSplit">
 			<li ui-sref-active="active" ui-sref="auth.joinOrg" ng-click="getOrgs()" class="menuItemSelected"><a>Join Organization</a></li>
-			<li ui-sref-active="active" ui-sref="auth.createOrg" class="menuItemSelected"><a>Create Organization</a></li>
-			<li ui-sref-active="active" ui-sref="auth.userProfile" class="menuItemSelected"><a>My profile</a></li>
+			<li ui-sref-active="active" ui-sref="auth.userProfile" class="menuItemSelected"><a>Settings</a></li>
 			<li ui-sref-active="active"><a ng-click="logout()">Logout</a></li>
 		</ul>
 		<br>

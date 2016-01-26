@@ -38,6 +38,9 @@ angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnima
 				},
 				apptRef: function(mainService, user) {
 					return mainService.getMyMenteeBookedApts(user._id);
+				},
+				allMyAptRef: function(mainService, user) {
+					return mainService.getMyBookedApts(user._id);
 				}
 			}
 		})

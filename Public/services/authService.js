@@ -37,7 +37,6 @@ angular.module("skedApp").service("authService", function($http, $q, $state, $ro
        if(res.status !== 200){
         swal({
           title: "Email and Password combination not found",
-          text: "Please try again",
           type: "error",
           allowOutsideClick: true,
         });

@@ -23,7 +23,7 @@ angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $st
         });
     };
 
-	$scope.aptDurations = ['15 Minutes', '30 Minutes', '45 Minutes', '1 Hour'];
+	$scope.aptDurations = [{lenth: '15 Minutes'}, {length: '30 Minutes'}, {length: '45 Minutes'}, {length: '1 Hour'}];
 
 	$scope.getMyOpenApts = function(orgID, userID){
 		aptService.getMyOpenApts(orgID, userID).then(function(results){
