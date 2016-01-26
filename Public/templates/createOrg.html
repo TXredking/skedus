@@ -1,6 +1,10 @@
 <div class="container-fluid">
 	<div class="my-orgs-contain">
 	<br>
+		<div>
+			<button class="btn btn-primary" ui-sref="auth.userProfile">Back to Settings</button>
+		</div>
+	<br>
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h2>Create New Organization</h2>
@@ -14,19 +18,19 @@
 						<textarea ng-model="newOrg.desc" class="form-control" type="text" placeholder="Description"></textarea>
 					</div>
 					<div class="form-group">
-						<input ng-model="newOrg.add1" class="form-control" type="text" placeholder="Address 1">
+						<input required ng-model="newOrg.add1" class="form-control" type="text" placeholder="Address 1">
 					</div>
 					<div class="form-group">
 						<input ng-model="newOrg.add2" class="form-control" type="text" placeholder="Address 2">
 					</div>
 					<div class="form-group">
-						<input ng-model="newOrg.city" class="form-control" type="text" placeholder="City">
+						<input required ng-model="newOrg.city" class="form-control" type="text" placeholder="City">
 					</div>
 					<div class="form-group">
-						<input ng-model="newOrg.st" class="form-control" type="text" placeholder="State">
+						<input required ng-model="newOrg.st" class="form-control" type="text" placeholder="State">
 					</div>
 					<div class="form-group">
-						<input ng-model="newOrg.zip" class="form-control" type="text" placeholder="Zip Code">
+						<input required ng-model="newOrg.zip" class="form-control" type="text" placeholder="Zip Code">
 					</div>
 					<div class="form-group">
 						<input ng-model="newOrg.linkedin" class="form-control" type="text" placeholder="LinkedIn Link">

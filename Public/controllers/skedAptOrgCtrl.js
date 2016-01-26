@@ -12,6 +12,7 @@ angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, 
 
 	$scope.getOrgOpenApts = function(orgID){
 		skedAptService.getOrgOpenApts(orgID).then(function(results){
+			console.log("results", results)
 			$scope.orgApts = results;
 		});
 	};

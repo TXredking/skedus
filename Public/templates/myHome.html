@@ -45,28 +45,5 @@
 			</div>
 		</div>
 	</div>
-<a href=""></a>
-		<br>
-		<div class="panel panel-info">
-			<div class="panel-heading"><h1>My Organizations</h1></div>
-			<div class="panel-body">
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<tr>
-							<th>Org</th>
-							<th>Location</th>
-							<th> </th>
-						</tr>
-						<tr ng-repeat="org in myOrgs" ng-if="org.org.status === 'Active'">
-							<td>{{org.org.name}}</td>
-							<td>{{org.org.add1}} {{org.org.add2}} {{org.org.city}} {{org.org.st}} {{org.org.zip}}</td>
-							<td><button class="btn btn-info" ng-click="showOrgInfo(org.org)">Info</button></td>
-							<td><button class="btn btn-danger" ng-click="leaveOrg(org)">Leave</button></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-
 	</div>
 </div>

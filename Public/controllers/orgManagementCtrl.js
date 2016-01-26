@@ -103,8 +103,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 			return;
 		} else if(userRole === "Mentor"){
 			swal({
-				title: "Are you sure you want to make this user an admin?",
-				text: "They will have access to Organization Management.",
+				title: "Are you sure you want to make this user an admin? They will have access to Organization Management.",
 				type: "warning",
 				showCancelButton: true,
 				confirmButtonColor: "#DD6B55",
@@ -122,8 +121,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 			);
 		} else if(userRole === "User"){
 			swal({
-				title: "Are you sure you want to make this user an admin?",
-				text: "They will have access to Organization Management and Set Availability.",
+				title: "Are you sure you want to make this user an admin? They will have access to Organization Management and Set Availability.",
 				type: "warning",
 				showCancelButton: true,
 				confirmButtonColor: "#DD6B55",
@@ -145,8 +143,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 	$scope.makeMentor = function(userID, userRole){
 		if(userRole === "Admin"){
 			swal({
-			title: "Are you sure you want to make this user a Mentor?",
-			text: "They will no longer have access to Organization Management",
+			title: "Are you sure you want to make this user a Mentor? They will no longer have access to Organization Management",
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#DD6B55",
@@ -163,8 +160,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 			});
 		} else if(userRole === "User"){
 			swal({
-			title: "Are you sure you want to make this user a Mentor?",
-			text: "They will have access to Set Availability.",
+			title: "Are you sure you want to make this user a Mentor? They will have access to Set Availability.",
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#DD6B55",
@@ -185,8 +181,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 	$scope.makeUser = function(userID, userRole){
 		if(userRole === "Admin"){
 			swal({
-			title: "Are you sure you want to make this user a User?",
-			text: "They will no longer have access to Organization Management and Set Availability.",
+			title: "Are you sure you want to make this user a User? They will no longer have access to Organization Management and Set Availability.",
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#DD6B55",
@@ -203,8 +198,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 			});
 		} else if(userRole === "Mentor"){
 			swal({
-			title: "Are you sure you want to make this user a User?",
-			text: "They will no longer have access to Set Availability.",
+			title: "Are you sure you want to make this user a User? They will no longer have access to Set Availability.",
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#DD6B55",
@@ -249,7 +243,6 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 				"<br> <h4>Job Title: </h4>" + user.title +
 				"<br> <h4>Specialities: </h4>" + user.specialities +
 				"<br> <h4>Social Media: </h4>" + user.socialMedia,
-
 			html: true,
 			allowEscapeKey: true,
 			allowOutsideClick: true,

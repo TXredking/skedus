@@ -30,7 +30,6 @@
 
 			<hr id="menuSplit">
 			<li ui-sref-active="active" ui-sref="auth.joinOrg" ng-click="getOrgs()" class="menuItemSelected"><a>Join Organization</a></li>
-			<li ui-sref-active="active" ui-sref="auth.createOrg" class="menuItemSelected"><a>Create Organization</a></li>
 			<li ui-sref-active="active" ui-sref="auth.userProfile" class="menuItemSelected"><a>Settings</a></li>
 			<li ui-sref-active="active"><a ng-click="logout()">Logout</a></li>
 		</ul>
@@ -38,17 +37,15 @@
 	</div>
 </nav>
 
-<div class="row">
-	<div class="rightViewContent">
-		<nav id="topNavBar" class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
-			<div id='navSidebarButton'>
-				<a type="button" data-toggle='offcanvas' data-target='#navSidebar'>☰</a>
-			</div>
-			<div class="pageTitle">
-				<p>{{pageTitle}}</p>
-			</div>
-		</nav>
-	</div>
+<div class="rightViewContent">
+	<nav id="topNavBar" class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
+		<div id='navSidebarButton'>
+			<a type="button" data-toggle='offcanvas' data-target='#navSidebar'>☰</a>
+		</div>
+		<div class="pageTitle">
+			<p>{{pageTitle}}</p>
+		</div>
+	</nav>
 
-	<div class="page-content container-fluid" ui-view></div>
+	<div class="page-content" ui-view></div>
 </div>

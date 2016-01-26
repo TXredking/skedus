@@ -48,14 +48,14 @@ module.exports = {
       });
   },
   getUsers: function(req, res) {
-    User.find({status : 'active'}).exec().then(function(results) {
+    User.find({status : 'Active'}).exec().then(function(results) {
       return res.json(results);
     }).then(null, function(err) {
       return res.status(500).json(err);
     });
   },
   getUser: function(req, res) {
-    User.find({_id : req.params.id, status : 'active'}).exec().then(function(results) {
+    User.findById(req.params.id).exec().then(function(results) {
       if(!results) {
         res.status(404);
       }

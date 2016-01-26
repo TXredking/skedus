@@ -126,12 +126,8 @@ table {
 /*myhome, create, join & leave organization*/
 .create-orgs-contain, .my-orgs-contain, .join-orgs-contain {
 	margin: 0 auto;
-}
-.create-orgs-contain {
-	width: 45%;
-}
-.my-orgs-contain, .join-orgs-contain {
-	width: 70%;
+	width: 85%;
+
 }
 
 /*org management*/
