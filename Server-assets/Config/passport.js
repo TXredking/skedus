@@ -79,7 +79,7 @@ module.exports = function(passport, app) {
 	passport.use(new LinkedinStrategy({
 			consumerKey: LINKED_IN_API_KEY,
 			consumerSecret: LINKED_IN_API_SECRET,
-			callbackURL: "http://127.0.0.1:9001/api/auth/linkedin/callback",
+			callbackURL: "http://sked.us/api/auth/linkedin/callback",
 			scope: ['r_basicprofile', 'r_emailaddress'],
 			profileFields: ['id', 'first-name', 'last-name', 'email-address'],
 			passReqToCallback: true,
