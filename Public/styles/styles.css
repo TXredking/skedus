@@ -156,6 +156,23 @@ body {
   background-size: cover !important;
 }
 
+/*panels*/
+.panel-attending {
+	background-color: #68abc4;
+}
+
+.panel-hosting {
+	background-color: #da5d5d;
+}
+
+.panel-available {
+	background-color: #6aa768;
+}
+
+.white-title-text {
+	color: white;
+}
+
 /*Navigation sidebar*/
 #navSidebar {
 	width: 250px;
@@ -351,7 +368,7 @@ body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
   padding: 17px;
-  border-radius: 0px;
+  border-radius: 0px !important;
   text-align: center;
   position: fixed;
   left: 50%;
@@ -382,12 +399,12 @@ body {
   .sweet-alert p {
     color: #797979;
     font-size: 16px;
-    text-align: left;
+    text-align: left !important;
     font-weight: 300;
-    position: relative;
-    float: none;
-    margin: 0;
-    padding-left: 40px;
+    position: relative !important;
+    float: none !important;
+    margin: 0 !important;
+    padding-left: 40px !important;
     padding-right: 40px;
 
     line-height: normal; }
