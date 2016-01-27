@@ -3,7 +3,8 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
     restrict: 'E',
     scope: {
       apt: "=",
-      updated: "&"
+      updated: "&",
+      updateOpenApt: "&"
     },
     templateUrl: '/templates/calendarDirective.html',
     // link: function(scope, elem, attrs) {
@@ -11,7 +12,7 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
       //   scope.$emit('toggleCalendarLoaded', 1);
       // });
     // },
-    controller: function($scope, mainService, $state) {
+    controller: function($scope, mainService, skedAptService, $state) {
 
       // console.log("user", $scope.$parent.$parent.user);
       // console.log("scope", $scope);
@@ -94,10 +95,17 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
       };
 
       $scope.eventEdited = function(event) {
-        swal({
-          title: 'Edited',
-          text: event
-        });
+        skedAptService.skedApt(event._id, $scope.$parent.$parent.user).then(function(){
+    			swal({
+    				title: "You've successfully scheduled your appointment with " + event.mentor.firstName + " " + event.mentor.lastName + "!",
+    				allowEscapeKey: true,
+    				allowOutsideClick: true,
+    				timer: 3000,
+    			});
+    			$scope.updateOpenApt($state.params.id);
+    			$scope.updated($scope.$parent.$parent.user._id);
+          $state.reload(true);
+    		});
       };
 
       $scope.eventDeleted = function(event) {
@@ -117,7 +125,6 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
               $scope.updated($scope.$parent.$parent.user);
     					// $scope.getAllMyApts($scope.$parent.$parent.user);
     					$state.reload(true);
-              // console.log('reload');
     				});
     			};
     		});

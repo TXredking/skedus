@@ -53,8 +53,6 @@ $(document).ready(function(){
 	$scope.pageTitle = "sked";
 
 	$scope.user = user;
-	$scope.mainService = mainService;
-
 
 	$scope.getMyOrgs = function(userID){
 		mainService.getMyOrgs(userID).then(function(res){
