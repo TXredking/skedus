@@ -1,18 +1,11 @@
 angular.module("skedApp").controller("profileCtrl", function($scope, $state, userService){
 
-	//spinning loading animation
-	$scope.stuffLoaded = false;
-	$scope.notLoaded = true;
-
 	var getUser = function(userID){
  		userService.getUser(userID).then(function(res){
-  			$scope.user = res;
+			$scope.user = res;
 
-				//cancels circle spinner and unhide loaded view
-				$scope.stuffLoaded = true;
-				$scope.notLoaded = false;
-  		})
-  	};
+  	})
+  };
 
 	$scope.updateUser = function(userID){
   		userService.updateUser($scope.user._id, $scope.userUpdates).then(function(){
