@@ -140,6 +140,9 @@ table {
 .org-name {
 	word-wrap: break-word;
 }
+.blockedUser {
+	text-decoration: line-through;
+}
 
 /*.body {
 	height: 100vh;
@@ -389,6 +392,5 @@ body {
     margin: 0;
     padding-left: 40px;
     padding-right: 40px;
-
     line-height: normal; }
 }

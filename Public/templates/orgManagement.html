@@ -12,10 +12,10 @@
 		                    <th class="col-sm-6"> </th>
 		                </tr>
 		                <tr ng-repeat="user in orgUsers | orderBy: user.userid.lastName">
-		                    <td class="pointer" ng-click="showInfo(user.userid)"><h5>{{user.userid.lastName}}, {{user.userid.firstName}}</h5></td>
-		                    <td><h5>{{user.userid.email}}</h5></td>
+		                    <td class="pointer" ng-click="showInfo(user.userid)"><h5 ng-class="{'blockedUser': user.role === 'Blocked'}">{{user.userid.lastName}}, {{user.userid.firstName}}</h5></td>
+		                    <td><h5 ng-class="{'blockedUser': user.role === 'Blocked'}">{{user.userid.email}}</h5></td>
 		                    <td class="pull-right">
-		                    	<button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="makeAdmin(user.userid._id, user.role)" >Admin</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Mentor'}" ng-click="makeMentor(user.userid._id, user.role)" >Mentor</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'User'}" ng-click="makeUser(user.userid._id, user.role)" >User</button><button class="btn btn-sm btn-warning org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="removeUser(user.userid._id, user.role)" >Remove</button><button class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="blockUser(user.userid._id, user.role)" >Block</button>
+		                    	<button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="makeAdmin(user.userid._id, user.role)" >Admin</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Mentor'}" ng-click="makeMentor(user.userid._id, user.role)" >Mentor</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'User'}" ng-click="makeUser(user.userid._id, user.role)" >User</button><button class="btn btn-sm btn-warning org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="removeUser(user.userid._id, user.role)" >Remove</button><button ng-if="user.role !== 'Blocked'" class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="blockUser(user.userid._id, user.role)" >Block</button><button ng-if="user.role === 'Blocked'" class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="unblockUser(user.userid._id, user.role)" >UnBlock</button>
 		                    </td>
 		                </tr>
 		            </table>
