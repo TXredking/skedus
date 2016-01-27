@@ -169,5 +169,20 @@ angular.module("skedApp").service("orgService", function($http, $q){
 		return dfd.promise;
 	};
 
+	this.unblockUser = function(userID, orgID){
+		var dfd = $q.defer();
+		$http({
+			method: "POST",
+			url: "/api/org/" + orgID + "/user",
+			data: {
+				role: "User",
+				userid: userID,
+			}
+		}).then(function(){
+			dfd.resolve();
+		});
+		return dfd.promise;
+	};
+
 
 });

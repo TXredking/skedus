@@ -250,11 +250,31 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 				type: "warning",
 				showCancelButton: true,
 				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "Remove",
+				confirmButtonText: "Block",
 				cancelButtonText: "Cancel",
 			}, function(isConfirm){
 				if(isConfirm){
 					orgService.blockUser(userID, $state.params.id).then(function(){
+						$scope.getOrgUsers($state.params.id);
+					})
+				};
+			});
+		}
+	};
+	$scope.unblockUser = function(userID, userRole){
+		if(userRole === "Admin"){
+			return
+		} else {
+			swal({
+				title: "Are you sure you want to unblock user?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Unblock",
+				cancelButtonText: "Cancel",
+			}, function(isConfirm){
+				if(isConfirm){
+					orgService.unblockUser(userID, $state.params.id).then(function(){
 						$scope.getOrgUsers($state.params.id);
 					})
 				};
