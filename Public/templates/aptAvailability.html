@@ -14,6 +14,7 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                         <input ng-model="newApt.startsAt" class="form-control" placeholder="Start Time"/>
                     </div>
+                    <label><b>Appointment Duration<b></label>
                     <div class="form-group">
                         <label class="radio-inline">
                             <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="15 Minutes" > 15 Minutes
@@ -39,15 +40,13 @@
             <table class="table">
                 <tr>
                     <th>Day</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th></th>
+                    <th>Time</th>
+                    <th>Remove</th>
                 </tr>
                 <tr ng-repeat="apt in myOpenApts">
-                    <td><h5>{{apt.startsAt | date: "fullDate"}}</h5></td>
-                    <td><h5>{{apt.startsAt | date: "shortTime"}}</h5></td>
-                    <td><h5>{{apt.endsAt | date: "shortTime"}}</h5></td>
-                    <td><span ng-click="removeOpenApt(apt._id)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                    <td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+                    <td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+                    <td><button ng-click="removeOpenApt(apt._id)" class="btn btn-danger">Remove</button></td>
                 </tr>
             </table>
         </div>
