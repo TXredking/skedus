@@ -65,7 +65,7 @@
 							<th class="col-sm-6"> </th>
 						</tr>
 						<tr ng-repeat="org in myOrgs" ng-if="org.org.status === 'Active'">
-							<td>{{org.org.name}}</td>
+							<td class="pointer" ng-click="showOrgInfo(org.org)">{{org.org.name}}</td>
 							<td>{{org.org.add1}} {{org.org.add2}} {{org.org.city}} {{org.org.st}} {{org.org.zip}}</td>
 							<td class="pull-right"><button class="btn btn-sm btn-info" ng-click="showOrgInfo(org.org)">Info</button><button class="btn btn-sm btn-danger" ng-click="leaveOrg(org)">Leave</button></td>
 						</tr>

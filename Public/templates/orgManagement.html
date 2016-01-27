@@ -15,7 +15,7 @@
 		                    <td class="pointer" ng-click="showInfo(user.userid)"><h5>{{user.userid.lastName}}, {{user.userid.firstName}}</h5></td>
 		                    <td><h5>{{user.userid.email}}</h5></td>
 		                    <td class="pull-right">
-		                    	<button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="makeAdmin(user.userid._id, user.role)" >Admin</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Mentor'}" ng-click="makeMentor(user.userid._id, user.role)" >Mentor</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'User'}" ng-click="makeUser(user.userid._id, user.role)" >User</button><button class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="removeUser(user.userid._id, user.role)" >X</button>
+		                    	<button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="makeAdmin(user.userid._id, user.role)" >Admin</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Mentor'}" ng-click="makeMentor(user.userid._id, user.role)" >Mentor</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'User'}" ng-click="makeUser(user.userid._id, user.role)" >User</button><button class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="removeUser(user.userid._id, user.role)" >Remove</button>
 		                    </td>
 		                </tr>
 		            </table>
@@ -79,8 +79,8 @@
 					<h4>LinkedIn: {{currentOrg.linkedin}}</h4>
 					<h4>Facebook: {{currentOrg.facebook}}</h4>
 					<h4>Twitter: {{currentOrg.twitter}}</h4>
-					<button class="btn btn-primary" ng-click="showEdit = !showEdit">Edit Profile</button>
-					<button class="btn btn-danger" ng-click="deactivateOrg(currentOrg._id)">Deactivate Org</button>
+					<button class="btn btn-sm btn-danger pull-right" ng-click="deactivateOrg(currentOrg._id)">Deactivate Org</button>
+					<button class="btn btn-sm btn-primary pull-right" ng-click="showEdit = !showEdit">Edit Profile</button>
 				</div>
 			</div>
 			<div ng-show="showEdit" class="panel panel-info">
@@ -120,7 +120,7 @@
 							<input ng-model="orgUpdateData.twitter" class="form-control" placeholder="Link to Twitter">
 						</div>
 						<div class="form-group">
-							<button class=" btn btn-default login-button" type="submit" ng-click="updateOrg(orgUpdateData); showEdit = !showEdit">Save Changes</button>
+							<button class=" btn btn-sm btn-primary login-button" type="submit" ng-click="updateOrg(orgUpdateData); showEdit = !showEdit">Save Changes</button>
 						</div>
 					</form>
 				</div>

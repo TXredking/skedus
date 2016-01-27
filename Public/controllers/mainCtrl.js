@@ -261,9 +261,9 @@ $(document).ready(function(){
 			title: org.name,
 			text: "<h4>About: </h4>" + org.desc +
 				"<br><h4>Location: </h4>" + org.add1 + " " + org.add2 + " " + org.city + " " + org.st +  " " + org.zip +
-				"<br> <h4>LinkedIn Link: </h4>" + org.linkedin +
-				"<br> <h4>Facebook Link: </h4>" + org.facebook +
-				"<br> <h4>Twitter Link: </h4>" + org.twitter,
+				"<br> <h4>LinkedIn: </h4>" + org.linkedin +
+				"<br> <h4>Facebook: </h4>" + org.facebook +
+				"<br> <h4>Twitter: </h4>" + org.twitter,
 			html: true,
 			allowEscapeKey: true,
 			allowOutsideClick: true,
