@@ -55,6 +55,9 @@ table {
 	font-family: monospace;
 	font-size: 6em;
 }
+.pointer {
+	cursor: pointer;
+}
 
 #below-navbar {
 	padding-top: 70px;

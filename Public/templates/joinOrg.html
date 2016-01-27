@@ -15,17 +15,17 @@
 				</div>
 			</div>
 			<div class="table-responsive col-sm-12">
-				<table class="table table-hover">
-						<th>Organization</th>
-						<th>Location</th>
-						<th>Info</th>
-						<th>Join</th>
+				<table class="table table-hover table-striped">
+						<th class="col-sm-3">Organization</th>
+						<th class="col-sm-4">Location</th>
+						<th class="col-sm-2">Category</th>
+						<th class="col-sm-3"> </th>
 					</tr>
 					<tr ng-repeat="org in orgs | filter:searchOrg" >
-						<td class="org-name col-md-3"><h3>{{org.name}}</h3></td>
+						<td class="pointer" ng-click="showOrgInfo(org)"><h4>{{org.name}}</h4></td>
 						<td><h5>{{org.add1}} {{org.add2}} {{org.city}} {{org.st}} {{org.zip}}</h5></td>
-						<td><button class="btn btn-info"ng-click="showOrgInfo(org)">Info</button></td>
-						<td><button class="btn btn-success" ng-click="joinOrg(org)">Join</button></td>
+						<td><h5>{{org.category}}</h5></td>
+						<td class="pull-right"><button class="btn btn-sm btn-info"ng-click="showOrgInfo(org)">Info</button><button class="btn btn-sm btn-success" ng-click="joinOrg(org)">Join</button></td>
 					</tr>
 				</table>
 			</div>

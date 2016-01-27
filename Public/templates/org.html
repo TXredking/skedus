@@ -1,5 +1,6 @@
 <div class="container-fluid">
 	<div class=" join-orgs-contain">
+		<br>
 		<div class="panel panel-info">
 	        <div class="panel-heading"><h1>{{currentOrg.name}}</h1></div>
 	        <div class="panel-body">
@@ -20,7 +21,7 @@
 		                    <th> </th>
 		                </tr>
 		                <tr ng-repeat="user in orgUsers | orderBy: user.userid.lastName">
-		                    <td ng-click="showUserInfo(user.userid)"><h5>{{user.userid.lastName}}, {{user.userid.firstName}}</h5>
+		                    <td  class="pointer" ng-click="showUserInfo(user.userid)"><h5>{{user.userid.lastName}}, {{user.userid.firstName}}</h5>
 		                    </td>
 		                    <td> </td>
 		                </tr>

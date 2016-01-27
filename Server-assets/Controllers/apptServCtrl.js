@@ -34,7 +34,7 @@ module.exports = {
 
 // api/apt/:orgID/:userID/open // GET
   getMyOpenAppts: function(req, res){
-    Appt.find({mentor: req.params.userID}).find({org: req.params.orgID}).find({status: "open"}).sort({startTime: 1}).exec().then(function(results){
+    Appt.find({mentor: req.params.userID}).find({org: req.params.orgID}).find({status: "open"}).sort({startsAt: 1}).exec().then(function(results){
       res.json(results);
     })
   },
@@ -43,7 +43,7 @@ module.exports = {
   getMyMentorBookedAppts: function(req, res){
     Appt.find( {$or: [{mentor: req.params.userID}, {mentee: req.params.userID}]})
     .find({status: "booked"})
-    .sort({startTime: 1})
+    .sort({startsAt: 1})
     .populate("org")
     .populate("mentor")
     .populate("mentee")
@@ -54,14 +54,14 @@ module.exports = {
 
   // api/apt/:userID/booked // GET
   getMyMenteeBookedAppts: function(req, res){
-    Appt.find({mentee: req.params.userID}).sort({startTime: 1}).populate("org").populate("mentor").exec().then(function(results){
+    Appt.find({mentee: req.params.userID}).sort({startsAt: 1}).populate("org").populate("mentor").exec().then(function(results){
       res.json(results);
     });
   },
 
 // api/apt/:orgID // GET
   getOrgAppts: function(req, res){
-    Appt.find({org: req.params.orgID}).sort({startTime: 1}).populate("mentor").exec().then(function(results){
+    Appt.find({org: req.params.orgID}).sort({startsAt: 1}).populate("mentor").exec().then(function(results){
       res.json(results);
     });
   },

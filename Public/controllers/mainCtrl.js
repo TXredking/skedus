@@ -159,9 +159,21 @@ $(document).ready(function(){
 
 	$scope.getAllMyApts = function() {
 		mainService.getMyBookedApts($scope.user._id).then(function(results) {
+			var allMyMentorApts = [];
+			var allMyMenteeApts = [];
+			for(var i = 0; i < results.length; i++){
+				if(results[i].mentor._id === $scope.user._id){
+					allMyMentorApts.push(results[i]);
+				} else {
+					allMyMenteeApts.push(results[i]);
+				}
+			}
+			$scope.allMyMenteeApts = allMyMenteeApts;
+			$scope.allMyMentorApts = allMyMentorApts;
 			$scope.allMyApts = results;
 		});
 	};
+	$scope.getAllMyApts();
 
 	//get all mentee booked appointments
 	$scope.myMenteeBookedApts = apptRef;
@@ -257,14 +269,45 @@ $(document).ready(function(){
 			title: org.name,
 			text: "<h4>About: </h4>" + org.desc +
 				"<br><h4>Location: </h4>" + org.add1 + " " + org.add2 + " " + org.city + " " + org.st +  " " + org.zip +
-				"<br> <h4>LinkedIn Link: </h4>" + org.linkedin +
-				"<br> <h4>Facebook Link: </h4>" + org.facebook +
-				"<br> <h4>Twitter Link: </h4>" + org.twitter,
+				"<br> <h4>LinkedIn: </h4>" + org.linkedin +
+				"<br> <h4>Facebook: </h4>" + org.facebook +
+				"<br> <h4>Twitter: </h4>" + org.twitter,
+			html: true,
+			allowEscapeKey: true,
+			allowOutsideClick: true,
+		})
+	};
+
+	$scope.moreMentorInfo = function(apt){
+		swal({
+			title: apt.title,
+			text: "<h4>Organization: </h4>" + apt.org.name +
+			    "<br><h4>Mentor: </h4>" + apt.mentor.firstName + " " + apt.mentor.lastName +
+				"<br><h4>About: </h4>" + apt.mentor.desc +
+				"<br><h4>Company: </h4>" + apt.mentor.company +
+				"<br><h4>Job Title: </h4>" + apt.mentor.title +
+				"<br><h4>Specialities: </h4>" + apt.mentor.specialities,
 			html: true,
 			allowEscapeKey: true,
 			allowOutsideClick: true,
 		})
 	}
+
+	$scope.moreMenteeInfo = function(apt){
+		swal({
+			title: apt.title,
+			text: "<h4>Organization: </h4>" + apt.org.name +
+			    "<br><h4>Mentee: </h4>" + apt.mentee.firstName + " " + apt.mentee.lastName +
+				"<br><h4>About: </h4>" + apt.mentee.desc +
+				"<br><h4>Company: </h4>" + apt.mentee.company +
+				"<br><h4>Job Title: </h4>" + apt.mentee.title +
+				"<br><h4>Specialities: </h4>" + apt.mentee.specialities,
+			html: true,
+			allowEscapeKey: true,
+			allowOutsideClick: true,
+		})
+	}
+
 
 
 	$scope.logout = function() {
