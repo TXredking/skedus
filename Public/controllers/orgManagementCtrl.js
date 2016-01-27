@@ -238,6 +238,27 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 		}
 	};
 
+	$scope.blockUser = function(userID, userRole){
+		if(userRole === "Admin"){
+			return
+		} else {
+			swal({
+				title: "Are you sure you want to block user from your organization?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Remove",
+				cancelButtonText: "Cancel",
+			}, function(isConfirm){
+				if(isConfirm){
+					orgService.blockUser(userID, $state.params.id).then(function(){
+						$scope.getOrgUsers($state.params.id);
+					})
+				};
+			});
+		}
+	};
+
 	$scope.showInfo = function(user){
 		swal({
 			title: user.firstName + " " + user.lastName,
