@@ -11,6 +11,7 @@ var orgSchema = new Schema({
     role: {type: String, enum: ['Admin', 'Mentor', 'User']},
   }],
   apts: [{type: String, ref: "Appt"}],
+  category: {type: String, default: "None"},
   desc: {type: String},
   add1: {type: String},
   add2: {type: String, default: ""},
