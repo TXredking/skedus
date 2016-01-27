@@ -3,12 +3,9 @@ var Org = require('../Models/orgSchema.js'),
 	Appt = require('../Models/apptSchema.js');
 
 //searches at midnight
-module.exports = {
-	changeStatus : function() {
-				console.log('appointment loggin1');	
-		// Appt.find({ status : 'open' }).exec().then(function(result) {
+
 		Appt.find({ startsAt : { $lt: Date.now() }, status : 'open' }).exec().then(function(result) {
-				console.log('appointment results : ', result);
+				console.log('appointment loggin2');
 			
 			for (var i = 0; i < result.length; i++) {
 				
@@ -23,7 +20,7 @@ module.exports = {
 
 		});
 
-		Appt.find({ endsAt : { $lt: Date.now() }, status : 'booked' }).exec().then(function(result) {
+		Appt.find({ startsAt : { $lt: Date.now() }, status : 'booked' }).exec().then(function(result) {
 			
 			for (var k = 0; k < result.length; k++) {
 				
@@ -35,9 +32,6 @@ module.exports = {
 			}
 
 		});
-	}
-
-}
 
 
 
