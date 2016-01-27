@@ -14,27 +14,29 @@
 			<div class="panel panel-info">
 				<div class="panel-heading"><h1>{{thisOrg.name}} available apopintments</h1></div>
 				<div class="panel-body">
-					<table class="table">
-						<tr>
-							<th>Title</th>
-							<th>Day</th>
-							<th>Time</th>
-							<th>Mentor</th>
-							<th>Location</th>
-							<th> </th>
-						</tr>
-						<tr ng-model="orgApts" ng-repeat="apt in orgApts" ng-if="apt.status === 'open'">
-							<td><h5>{{apt.title}}</h5></td>
-							<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
-	          			    <td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-	            			<td><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
-	            			<td><h5>{{apt.loc}}</h5></td>
-							<td><button class="btn btn-success" ng-click="skedApt(apt)">Schedule</button></td>
-						</tr>
-					</table>
+					<div class="table-responsive">
+						<table class="table">
+							<tr>
+								<th>Title</th>
+								<th>Day</th>
+								<th>Time</th>
+								<th>Mentor</th>
+								<th>Location</th>
+								<th> </th>
+							</tr>
+							<tr ng-model="orgApts" ng-repeat="apt in orgApts">
+								<td><h5>{{apt.title}}</h5></td>
+								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+								<td><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+								<td><h5>{{apt.loc}}</h5></td>
+								<td><button class="btn btn-success" ng-click="skedApt(apt)">Schedule</button></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
-		
+
 		</div>
 	</div>
 </div>

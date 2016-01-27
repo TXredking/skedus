@@ -15,7 +15,7 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
 
       // console.log("user", $scope.$parent.$parent.user);
       // console.log("scope", $scope);
-      
+
       // $scope.getMyMenteeBookedApts = function(userID){
     	// 	mainService.getMyMenteeBookedApts(userID).then(function(results){
       //     for (var i = 0; i < results.length; i++) {
@@ -38,7 +38,7 @@ angular.module('skedApp').directive('calendarDirective', function($timeout) {
       $scope.viewDate = new Date();
 
       //calendar edit and delete icons
-      // $scope.enableEdit = '<i class=\'glyphicon glyphicon-pencil\'></i>';
+      $scope.enableEdit = '<i class=\'glyphicon glyphicon-pencil\'></i>';
       $scope.enableDel = '<i class=\'glyphicon glyphicon-remove\'></i>';
 
       // $scope.events = [

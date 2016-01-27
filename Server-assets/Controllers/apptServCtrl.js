@@ -59,7 +59,7 @@ module.exports = {
     });
   },
 
-// api/apt/:orgID/open // GET
+// api/apt/:orgID // GET
   getOrgAppts: function(req, res){
 
     clearAppts.changeStatus();
