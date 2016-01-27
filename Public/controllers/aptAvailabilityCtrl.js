@@ -1,5 +1,9 @@
 angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $state, aptService, mainService){
 
+	//spinning loading animation
+	$scope.stuffLoaded = false;
+	$scope.notLoaded = true;
+
 	$scope.createApt = function(newApt, orgID, userID){
         // console.log(new Date(moment($('#datetimepicker6').data("DateTimePicker").date()).toDate()));
         $scope.newApt.startsAt = new Date(moment($('#datetimepicker6').data("DateTimePicker").date()).toDate());
@@ -26,6 +30,10 @@ angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $st
 	$scope.getMyOpenApts = function(orgID, userID){
 		aptService.getMyOpenApts(orgID, userID).then(function(results){
 			$scope.myOpenApts = results;
+
+			//cancels circle spinner and unhide loaded view
+			$scope.stuffLoaded = true;
+			$scope.notLoaded = false;
 		});
 	};
 	$scope.getMyOpenApts($state.params.id, $scope.user._id);
@@ -47,7 +55,7 @@ angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $st
 				});
 			};
 		});
-		
+
 	};
 
 });

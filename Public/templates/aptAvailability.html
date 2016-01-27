@@ -1,8 +1,9 @@
 <div class="container-fluid">
     <br>
-    <div class="my-orgs-contain">
-        <div class="panel panel-info">
-            <div class="panel-heading"><h1>Create Appointment</h1></div>
+    <circle-spinner ng-show="notLoaded"></circle-spinner>
+    <div ng-show="stuffLoaded" class="my-orgs-contain">
+        <div class="panel">
+            <div class="panel-heading panel-available"><h2 class="white-title-text">Create Appointment</h2></div>
             <div class="panel-body">
                 <form>
                     <div class="form-group">
@@ -31,13 +32,13 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <button class=" btn btn-primary login-button" type="submit" ng-click="createApt(newApt, $state.params.id, user._id)">Create Apt</button>
+                        <button class=" btn btn-success login-button" type="submit" ng-click="createApt(newApt, $state.params.id, user._id)">Create Apt</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="panel panel-info">
-            <div class="panel-heading"><h1>My Open Apts</h1></div>
+        <div class="panel">
+            <div class="panel-heading panel-available"><h2 class="white-title-text">My Open Apts</h2></div>
             <div class="panel-body">
                 <table class="table table-striped table-hover">
                     <tr>

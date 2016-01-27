@@ -12,6 +12,10 @@ $(document).ready(function(){
 });
 // ------------------------------------------
 
+	//spinning loading animation
+	$scope.stuffLoaded = false;
+	$scope.notLoaded = true;
+
 	$scope.aptView = function(view) {
 		switch (view) {
 			case "listMode":
@@ -63,6 +67,10 @@ $(document).ready(function(){
 				}
 			}
 			$scope.myOrgs = res;
+
+			//cancels circle spinner and unhide loaded view
+			$scope.stuffLoaded = true;
+			$scope.notLoaded = false;
 		});
 	};
 	$scope.getMyOrgs($scope.user._id);

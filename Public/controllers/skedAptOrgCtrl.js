@@ -1,5 +1,9 @@
 angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, skedAptService, orgApptRef){
 
+	//spinning loading animation
+	$scope.stuffLoaded = false;
+	$scope.notLoaded = true;
+
 	// $scope.orgApts = orgApptRef;
 
 	// $scope.getOrgApts = function(orgID){
@@ -14,6 +18,10 @@ angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, 
 		skedAptService.getOrgOpenApts(orgID).then(function(results){
 			console.log("results", results)
 			$scope.orgApts = results;
+
+			//cancels circle spinner and unhide loaded view
+			$scope.stuffLoaded = true;
+			$scope.notLoaded = false;
 		});
 	};
 	$scope.getOrgOpenApts($state.params.id);

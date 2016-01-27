@@ -2,9 +2,10 @@ angular.module("skedApp").controller("profileCtrl", function($scope, $state, use
 
 	var getUser = function(userID){
  		userService.getUser(userID).then(function(res){
-  			$scope.user = res;
-  		})
-  	};
+			$scope.user = res;
+
+  	})
+  };
 
 	$scope.updateUser = function(userID){
   		userService.updateUser($scope.user._id, $scope.userUpdates).then(function(){
