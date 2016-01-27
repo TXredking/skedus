@@ -33,6 +33,30 @@ angular.module("skedApp").service("orgService", function($http, $q){
 		return dfd.promise;
 	};
 
+	this.getAllOrgApts = function(orgID, userID){
+		var dfd = $q.defer();
+		$http({
+			method: "GET",
+			url: "/api/apt/" + orgID,
+		}).then(function(results){
+			var aptResults = results.data
+			console.log("get all apts", results.data);
+			for (var i = aptResults.length - 1; i >= 0; i--) {
+				if (aptResults[i].status === "past" || aptResults[i].status === "completed") {
+					aptResults.splice(i, 1);
+				}
+				else {
+					if (aptResults[i].mentor._id === userID) {
+						aptResults[i].type = "important";
+					}
+				}
+			}
+			// console.log("aptResults:", aptResults);
+			dfd.resolve(results.data);
+		});
+		return dfd.promise;
+	};
+
 	this.updateOrg = function(orgID, updateData){
 		var dfd = $q.defer();
 		$http({

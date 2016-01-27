@@ -12,15 +12,17 @@
 				<ul class='nav nav-sidebar'>
 					<li class="dropdown" ui-sref-active="active" ng-repeat="org in myOrgs">
 						<a ng-if="org.org.status === 'Active'" data-toggle="dropdown" ui-sref-active="active" id="menuCompanyName" aria-expanded="false" aria-haspopup="true">{{org.org.name}} <span class="caret"></span></a>
-
 							<ul class="dropdown-menu navmenu-nav" id="companyMenuItems" role="menu">
-								<li ui-sref-active="active"><a ui-sref='auth.skedAptOrg({id: org.org._id})' data-target="">Sked an appointment</a></li> <!-- all users -->
 
-								<li ng-if="org.role === 'Mentor' || org.role === 'Admin'" ui-sref-active="active"><a ui-sref="auth.aptAvailability({id: org.org._id})">Create appointment</a></li> <!-- only if user is mentor -->
+							<li ng-if="org.role === 'Mentor' || org.role === 'Admin'" ui-sref-active="active"><a ui-sref='auth.allOrgAppointment({id: org.org._id})' data-target="">All appointments</a></li> <!-- only if user is mentor -->
 
-								<li ng-if="org.role === 'Mentor' || org.role === 'User'" ui-sref-active="active"><a ui-sref='auth.org({id: org.org._id})'>Organization</a></li> <!-- Only mentor and users -->
+							<li ui-sref-active="active"><a ui-sref='auth.skedAptOrg({id: org.org._id})' data-target="">Sked an appointment</a></li> <!-- all users -->
 
-								<li ng-if="org.role === 'Admin'" ui-sref-active="active"><a ui-sref="auth.orgManagement({id: org.org._id})">Management</a></li> <!-- only if user is admin -->
+							<li ng-if="org.role === 'Mentor' || org.role === 'Admin'" ui-sref-active="active"><a ui-sref="auth.aptAvailability({id: org.org._id})">Create appointment</a></li> <!-- only if user is mentor -->
+
+							<li ng-if="org.role === 'Mentor' || org.role === 'User'" ui-sref-active="active"><a ui-sref='auth.org({id: org.org._id})'>Organization</a></li> <!-- Only mentor and users -->
+
+							<li ng-if="org.role === 'Admin'" ui-sref-active="active"><a ui-sref="auth.orgManagement({id: org.org._id})">Management</a></li> <!-- only if user is admin -->
 							</ul>
 					</li>
 				</ul>
