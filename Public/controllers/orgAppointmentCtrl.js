@@ -1,5 +1,9 @@
 angular.module("skedApp").controller("orgAppointmentCtrl", function($scope, $state, skedAptService, allOrgApptRef) {
 
+  //spinning loading animation
+	$scope.stuffLoaded = false;
+	$scope.notLoaded = true;
+
   $scope.allOrgApts = allOrgApptRef;
 
   // $scope.getOrgApts = function(orgID){
@@ -20,6 +24,10 @@ angular.module("skedApp").controller("orgAppointmentCtrl", function($scope, $sta
   $scope.getOrg = function(orgID){
     skedAptService.getOrg(orgID).then(function(result){
       $scope.thisOrg = result;
+
+      //cancels circle spinner and unhide loaded view
+			$scope.stuffLoaded = true;
+			$scope.notLoaded = false;
     });
   };
   $scope.getOrg($state.params.id);

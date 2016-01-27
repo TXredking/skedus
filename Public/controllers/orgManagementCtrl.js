@@ -1,5 +1,6 @@
 angular.module("skedApp").controller("orgManagementCtrl", function($scope, $state, orgService){
 
+	//spinning loading animation
 	$scope.stuffLoaded = false;
 	$scope.notLoaded = true;
 
@@ -7,6 +8,8 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 		orgService.getOrgUsers(orgID).then(function(results){
 			console.log("results:", results)
 			$scope.orgUsers = results;
+
+			//cancels circle spinner and unhide loaded view
 			$scope.stuffLoaded = true;
 			$scope.notLoaded = false;
 		})
@@ -238,8 +241,8 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 		swal({
 			title: user.firstName + " " + user.lastName,
 			text: "<h4>About: </h4>" + user.desc +
-				"<br>" + 
-				" <h4>Company: </h4>" + user.company + 
+				"<br>" +
+				" <h4>Company: </h4>" + user.company +
 				"<br> <h4>Job Title: </h4>" + user.title +
 				"<br> <h4>Specialities: </h4>" + user.specialities +
 				"<br> <h4>Social Media: </h4>" + user.socialMedia,
