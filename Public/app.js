@@ -1,4 +1,4 @@
-angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnimate', 'angular-spinkit']).config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider){
+angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnimate', 'angular-spinkit', 'ngTagsInput']).config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider){
 
 	$urlRouterProvider.otherwise("/login");
 

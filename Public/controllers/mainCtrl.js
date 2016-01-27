@@ -145,6 +145,7 @@ $(document).ready(function(){
 		}
 	};
 
+
 	//get all book appointments for a user
 	$scope.allMyApts = allMyAptRef;
 
