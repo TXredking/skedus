@@ -46,7 +46,6 @@ angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnima
 		})
 		.state("auth.myHome", {
 			url: "/home",
-			controller: "myHomeCtrl",
 			templateUrl: "templates/myHome.html"
 		})
 		.state("auth.createOrg", {

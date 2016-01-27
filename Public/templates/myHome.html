@@ -13,15 +13,15 @@
 
 		<div ng-show="listMode" class="">
 			<br>
-			<div ng-if="allMyMenteeApts[0]" class="panel panel-info">
-				<div class="panel-heading"><h1>Attending</h1></div>
+			<div ng-if="allMyMenteeApts[0]" class="panel">
+				<div class="panel-heading panel-attending"><h2 class="white-title-text">Attending</h2></div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-hover table-striped">
 							<tr>
 								<th class="col-sm-2">Day</th>
 								<th class="col-sm-2">Time</th>
-								<th class="col-sm-2">Location</th> 
+								<th class="col-sm-2">Location</th>
 								<th class="col-sm-6"> </th>
 							</tr>
 							<tr ng-repeat="apt in allMyMenteeApts">
@@ -34,15 +34,15 @@
 					</div>
 				</div>
 			</div>
-			<div ng-if="allMyMentorApts[0]" class="panel panel-info">
-				<div class="panel-heading"><h1>Hosting</h1></div>
+			<div ng-if="allMyMentorApts[0]" class="panel">
+				<div class="panel-heading panel-hosting"><h2 class="white-title-text">Hosting</h2></div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-hover table-striped">
 							<tr>
 								<th class="col-sm-2">Day</th>
 								<th class="col-sm-2">Time</th>
-								<th class="col-sm-2">Location</th> 
+								<th class="col-sm-2">Location</th>
 								<th class="col-sm-6"> </th>
 							</tr>
 							<tr ng-repeat="apt in allMyMentorApts">
