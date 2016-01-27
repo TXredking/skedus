@@ -77,8 +77,6 @@ angular.module("skedApp").service("mainService", function($http, $q){
 			method: "GET",
 			url: "/api/apt/all/" + userID + "/booked",
 		}).then(function(results){
-			console.log("service results:", results.data);
-			console.log("user:", userID);
 			for (var i = 0; i < results.data.length; i++) {
 				if (results.data[i].mentor._id === userID) {
 					results.data[i].type = "important";

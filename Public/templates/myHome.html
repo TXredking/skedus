@@ -1,49 +1,60 @@
 <div class="container-fluid">
 	<div class="my-orgs-contain">
 	<br>
-	<div class="btn-group">
-	  <button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>
-	  <button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar</button>
-	</div>
+		<div class="btn-group">
+		  <button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>
+		  <button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar</button>
+		</div>
 
-	<div ng-show="calendarMode" class="">
-		<calendar-directive apt="allMyApts" updated="getAllMyApts()" update-open-apt="skedApt()"></calendar-directive>
-		<!-- <circle-spinner></circle-spinner> -->
-	</div>
+		<div ng-show="calendarMode" class="">
+			<calendar-directive apt="allMyApts" updated="getAllMyApts()" update-open-apt="skedApt()"></calendar-directive>
+			<!-- <circle-spinner></circle-spinner> -->
+		</div>
 
-	<div ng-show="listMode" class="">
-		<br>
-		<div class="panel panel-info">
-			<div class="panel-heading"><h1>My Appointments</h1></div>
-			<div class="panel-body">
-				<div class="table-responsive">
-					<table class="table table-hover table-striped">
-						<tr>
-							<th>Title</th>
-							<th>Day</th>
-							<th>Start Time</th>
-							<th>End Time</th>
-							<th>Organization</th>
-							<th>Host</th>
-							<th>Location</th>
-							<th> </th>
-							<th> </th>
-						</tr>
-						<tr ng-repeat="apt in allMyApts">
-							<td><h5>{{apt.title}}</h5></td>
-							<td><h5>{{apt.startsAt | date: "EEEE - M/d/yy"}}</h5></td>
-							<td><h5>{{apt.startsAt | date: "shortTime"}}</h5></td>
-							<td><h5>{{apt.endsAt | date: "shortTime"}}</h5></td>
-							<td><h5>{{apt.org.name}}</h5></td>
-							<td><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
-							<td><h5>{{apt.loc}}</h5></td>
-							<td><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-info">Reschedule</button></td>
-							<td><button class="btn btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
-						</tr>
-					</table>
+		<div ng-show="listMode" class="">
+			<br>
+			<div ng-if="allMyMenteeApts[0]" class="panel panel-info">
+				<div class="panel-heading"><h1>Attending</h1></div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-striped">
+							<tr>
+								<th class="col-sm-2">Day</th>
+								<th class="col-sm-2">Time</th>
+								<th class="col-sm-2">Location</th> 
+								<th class="col-sm-6"> </th>
+							</tr>
+							<tr ng-repeat="apt in allMyMenteeApts">
+								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+								<td><h5>{{apt.loc}}</h5></td>
+								<td class="pull-right"><button ng-click="moreMentorInfo(apt)" class="btn btn-sm btn-warning">Info</button><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-sm btn-info">Reschedule</button><button class="btn btn-sm btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div ng-if="allMyMentorApts[0]" class="panel panel-info">
+				<div class="panel-heading"><h1>Hosting</h1></div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-striped">
+							<tr>
+								<th class="col-sm-2">Day</th>
+								<th class="col-sm-2">Time</th>
+								<th class="col-sm-2">Location</th> 
+								<th class="col-sm-6"> </th>
+							</tr>
+							<tr ng-repeat="apt in allMyMentorApts">
+								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+								<td><h5>{{apt.loc}}</h5></td>
+								<td class="pull-right"><button ng-click="moreMenteeInfo(apt)" class="btn btn-sm btn-warning">Info</button><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-sm btn-info">Reschedule</button><button class="btn btn-sm btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </div>

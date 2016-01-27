@@ -217,32 +217,38 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 
 	};
 
-	$scope.removeUser = function(userID){
-		swal({
-			title: "Are you sure you want to remove user?",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Remove",
-			cancelButtonText: "Cancel",
-		}, function(isConfirm){
-			if(isConfirm){
-				orgService.removeUser(userID, $state.params.id).then(function(){
-					$scope.getOrgUsers($state.params.id);
-				})
-			};
-		});
+	$scope.removeUser = function(userID, userRole){
+		if(userRole === "Admin"){
+			return
+		} else {
+			swal({
+				title: "Are you sure you want to remove user?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Remove",
+				cancelButtonText: "Cancel",
+			}, function(isConfirm){
+				if(isConfirm){
+					orgService.removeUser(userID, $state.params.id).then(function(){
+						$scope.getOrgUsers($state.params.id);
+					})
+				};
+			});
+		}
 	};
 
 	$scope.showInfo = function(user){
 		swal({
 			title: user.firstName + " " + user.lastName,
 			text: "<h4>About: </h4>" + user.desc +
-				"<br>" + 
-				" <h4>Company: </h4>" + user.company + 
-				"<br> <h4>Job Title: </h4>" + user.title +
-				"<br> <h4>Specialities: </h4>" + user.specialities +
-				"<br> <h4>Social Media: </h4>" + user.socialMedia,
+				"<br><h4>Email: </h4>" + user.email + 
+				"<br><h4>Company: </h4>" + user.company + 
+				"<br><h4>Job Title: </h4>" + user.title +
+				"<br><h4>Specialities: </h4>" + user.specialities +
+				"<br><h4>LinkedIn: </h4>" + user.linkedin +
+				"<br><h4>Facebook: </h4>" + user.facebook +
+				"<br><h4>Twitter: </h4>" + user.twitter,
 			html: true,
 			allowEscapeKey: true,
 			allowOutsideClick: true,
