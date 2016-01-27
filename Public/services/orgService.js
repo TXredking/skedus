@@ -152,7 +152,22 @@ angular.module("skedApp").service("orgService", function($http, $q){
 			dfd.resolve();
 		});
 		return dfd.promise;
-	}
+	};
+
+	this.blockUser = function(userID, orgID){
+		var dfd = $q.defer();
+		$http({
+			method: "POST",
+			url: "/api/org/" + orgID + "/user",
+			data: {
+				role: "Blocked",
+				userid: userID,
+			}
+		}).then(function(){
+			dfd.resolve();
+		});
+		return dfd.promise;
+	};
 
 
 });

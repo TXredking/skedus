@@ -8,7 +8,7 @@ var orgSchema = new Schema({
   name: {type: String, index: true, required: true, unique: true},
   members: [{
     userid: {type: String, ref: "User"},
-    role: {type: String, enum: ['Admin', 'Mentor', 'User']},
+    role: {type: String, enum: ['Admin', 'Mentor', 'User', 'Blocked']},
   }],
   apts: [{type: String, ref: "Appt"}],
   category: {type: String, default: "None"},

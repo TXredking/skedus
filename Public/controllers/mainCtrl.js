@@ -60,6 +60,12 @@ $(document).ready(function(){
 
 	$scope.getMyOrgs = function(userID){
 		mainService.getMyOrgs(userID).then(function(res){
+			console.log('res', res);
+			for(var i = res.length - 1; i >=0 ; i--){
+				if(res[i].role === "Blocked"){
+					res.splice(i,1)
+				}
+			}
 			$scope.myOrgs = res;
 
 			//cancels circle spinner and unhide loaded view
