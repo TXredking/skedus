@@ -23,7 +23,7 @@
 							<th>Location</th>
 							<th> </th>
 						</tr>
-						<tr ng-model="orgApts" ng-repeat="apt in orgApts" ng-if="apt.status === 'open'">
+						<tr ng-model="orgApts" ng-repeat="apt in orgApts">
 							<td><h5>{{apt.title}}</h5></td>
 							<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 	          			    <td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>

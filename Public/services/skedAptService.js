@@ -21,7 +21,7 @@ angular.module("skedApp").service("skedAptService", function($http, $q){
 			var aptResults = results.data
 			// console.log("get open apts", results.data);
 			for (var i = aptResults.length - 1; i >= 0; i--) {
-				if (aptResults[i].status === "booked") {
+				if (aptResults[i].status === "booked" || aptResults[i].status === "past" || aptResults[i].status === "completed") {
 					aptResults.splice(i, 1);
 				}
 				else {
