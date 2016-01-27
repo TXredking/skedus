@@ -74,6 +74,18 @@ angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnima
 				}
 			}
 		})
+
+		.state("auth.allOrgAppointment", {
+			url: "/appointments/:id",
+			controller: "orgAppointmentCtrl",
+			templateUrl: "templates/orgAppointment.html",
+			resolve: {
+				allOrgApptRef: function(orgService, $stateParams, user) {
+					return orgService.getAllOrgApts($stateParams.id, user._id);
+				}
+			}
+		})
+
 		.state("auth.org", {
 			url: "/org/:id",
 			controller: "orgCtrl",
@@ -85,7 +97,7 @@ angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnima
 			templateUrl: "templates/orgManagement.html"
 		})
 		.state("auth.aptAvailability", {
-			url: "/aptAvailability/:id",
+			url: "/create_appointment/:id",
 			controller: "aptAvailabilityCtrl",
 			templateUrl: "templates/aptAvailability.html"
 		})
