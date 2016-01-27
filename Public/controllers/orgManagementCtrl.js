@@ -1,5 +1,6 @@
 angular.module("skedApp").controller("orgManagementCtrl", function($scope, $state, orgService){
 
+	//spinning loading animation
 	$scope.stuffLoaded = false;
 	$scope.notLoaded = true;
 
@@ -7,6 +8,8 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 		orgService.getOrgUsers(orgID).then(function(results){
 			console.log("results:", results)
 			$scope.orgUsers = results;
+
+			//cancels circle spinner and unhide loaded view
 			$scope.stuffLoaded = true;
 			$scope.notLoaded = false;
 		})

@@ -1,5 +1,6 @@
 <div class="container-fluid">
-	<div class="my-orgs-contain">
+	<circle-spinner ng-show="notLoaded"></circle-spinner>
+	<div ng-show="stuffLoaded" class="my-orgs-contain">
 		<br>
 		<div class="btn-group">
 	    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>

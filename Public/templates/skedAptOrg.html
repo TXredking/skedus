@@ -1,5 +1,6 @@
 <div class="container-fluid">
-	<div class="my-orgs-contain">
+	<circle-spinner ng-show="notLoaded"></circle-spinner>
+	<div ng-show="stuffLoaded" class="my-orgs-contain">
 		<br>
 		<div class="btn-group">
 	    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>
@@ -12,7 +13,7 @@
 		<br>
 		<div ng-show="listMode">
 			<div class="panel panel-info">
-				<div class="panel-heading"><h1>{{thisOrg.name}} available apopintments</h1></div>
+				<div class="panel-heading"><h2>{{thisOrg.name}} available apopintments<h2></div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-hover table-striped">
