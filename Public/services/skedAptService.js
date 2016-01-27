@@ -1,16 +1,16 @@
 angular.module("skedApp").service("skedAptService", function($http, $q){
 
-	this.getOrgApts = function(orgID){
-		var dfd = $q.defer();
-		$http({
-			method: "GET",
-			url: "/api/apt/" + orgID,
-		}).then(function(results){
-			// console.log("skedAptService:", results.data);
-			dfd.resolve(results.data);
-		});
-		return dfd.promise;
-	};
+	// this.getOrgApts = function(orgID){
+	// 	var dfd = $q.defer();
+	// 	$http({
+	// 		method: "GET",
+	// 		url: "/api/apt/" + orgID,
+	// 	}).then(function(results){
+	// 		// console.log("skedAptService:", results.data);
+	// 		dfd.resolve(results.data);
+	// 	});
+	// 	return dfd.promise;
+	// };
 
 	this.getOrgOpenApts = function(orgID){
 		var dfd = $q.defer();
@@ -19,16 +19,17 @@ angular.module("skedApp").service("skedAptService", function($http, $q){
 			url: "/api/apt/" + orgID,
 		}).then(function(results){
 			var aptResults = results.data
-			// console.log("get open apts", results.data);
+			console.log("get open apts", results.data);
 			for (var i = aptResults.length - 1; i >= 0; i--) {
 				if (aptResults[i].status === "booked" || aptResults[i].status === "past" || aptResults[i].status === "completed") {
 					aptResults.splice(i, 1);
 				}
 				else {
 					aptResults[i].type = "success";
+					aptResults[i].editable = true;
 				}
 			}
-			// console.log("aptResults:", aptResults);
+			console.log("aptResults:", aptResults);
 			dfd.resolve(aptResults);
 		});
 		return dfd.promise;

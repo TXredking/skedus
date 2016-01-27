@@ -59,7 +59,7 @@ module.exports = {
     });
   },
 
-// api/apt/:orgID/open // GET
+// api/apt/:orgID // GET
   getOrgAppts: function(req, res){
     Appt.find({org: req.params.orgID}).sort({startTime: 1}).populate("mentor").exec().then(function(results){
       res.json(results);
