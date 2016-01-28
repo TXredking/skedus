@@ -2,59 +2,108 @@
     <br>
     <circle-spinner ng-show="notLoaded"></circle-spinner>
     <div ng-show="stuffLoaded" class="my-orgs-contain">
-        <div class="panel">
-            <div class="panel-heading panel-available"><h2 class="white-title-text">Create Appointment</h2></div>
+      <div class="row createOrgAptPanel">
+        <div class="indCreateAptPanel col-sm-6">
+          <div class="panel">
+            <div class="panel-heading panel-available"><h2 class="white-title-text">Create an appointment</h2></div>
             <div class="panel-body">
-                <form>
-                    <div class="form-group">
-                      <input type="text" ng-model="newApt.title" class="form-control" placeholder="Meeting title...">
-                        </div>
-                    <div class="form-group">
-                      <input ng-model="newApt.loc" class="form-control" placeholder="Location...">
-                    </div>
-                    <div class=' form-group input-group date' id='datetimepicker6'>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        <input ng-model="newApt.startsAt" class="form-control" placeholder="Start Time"/>
-                    </div>
-                    <label><b>Appointment Duration<b></label>
-                    <div class="form-group">
-                        <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="15 Minutes" > 15 Minutes
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="30 Minutes"> 30 Minutes
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="45 Minutes"> 45 Minutes
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="1 Hour"> 1 Hour
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <button class=" btn btn-success login-button" type="submit" ng-click="createApt(newApt, $state.params.id, user._id)">Create Apt</button>
-                    </div>
+              <form>
+                <div class="form-group">
+                  <input type="text" ng-model="newApt.title" class="form-control" placeholder="Meeting title...">
+                </div>
+                <div class="form-group">
+                  <input ng-model="newApt.loc" class="form-control" placeholder="Location...">
+                </div>
+                <div class=' form-group input-group date' id='datetimepicker6'>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                  <input ng-model="newApt.startsAt" class="form-control" placeholder="Start Time"/>
+                </div>
+                <label><b>Appointment Duration<b></label>
+                  <div class="form-group">
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="15 Minutes" > 15 Minutes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="30 Minutes"> 30 Minutes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="45 Minutes"> 45 Minutes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" ng-model="newApt.endsAt" value="1 Hour"> 1 Hour
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <button class=" btn btn-success login-button" type="submit" ng-click="createApt(newApt, $state.params.id, user._id)">Create appointment</button>
+                  </div>
                 </form>
+              </div>
             </div>
         </div>
-        <div class="panel">
-            <div class="panel-heading panel-available"><h2 class="white-title-text">My Open Apts</h2></div>
-            <div class="panel-body">
+
+        <div class="col-sm-6">
+          <div class="createAptPanel panel">
+            <div class="panel-heading panel-available"><h2 class="white-title-text">My open appointments</h2></div>
+            <div class="panel-body createAptPanelTable">
+              <div class="table-responsive">
                 <table class="table table-striped table-hover">
-                    <tr>
-                        <th class="col-sm-3">Day</th>
-                        <th class="col-sm-3">Time</th>
-                        <th class="col-sm-6"> </th>
-                    </tr>
-                    <tr ng-repeat="apt in myOpenApts">
-                        <td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
-                        <td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-                        <td class="pull-right"><button ng-click="removeOpenApt(apt._id)" class="btn btn-sm btn-danger">Remove</button></td>
-                    </tr>
+                  <tr>
+                    <th class="col-sm-3">Day</th>
+                    <th class="col-sm-3 col-md-4">Time</th>
+                    <th class="col-sm-6"> </th>
+                  </tr>
+                  <tr ng-repeat="apt in myOpenApts">
+                    <td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+                    <td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+                    <td class="pull-right"><button ng-click="removeOpenApt(apt._id)" class="btn btn-sm btn-danger">Remove</button></td>
+                  </tr>
                 </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="my-orgs-contain">
+  		<div class="btn-group">
+  	    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>
+  	    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar</button>
+  		</div>
+  		<br>
+  		<div ng-show="calendarMode">
+  			<calendar-directive apt="allOrgApts"></calendar-directive>
+  		</div>
+  		<br>
+  		<div ng-show="listMode">
+  			<div class="panel panel-info">
+  				<div class="panel-heading"><h2>All {{thisOrg.name}} appointments</h2></div>
+  				<div class="panel-body">
+  					<div class="table-responsive">
+  						<table class="table table-hover table-striped">
+  							<tr>
+  								<th>Day</th>
+  								<th>Time</th>
+  								<th>Title</th>
+  								<th>Host</th>
+  								<th>Location</th>
+  								<th>Status</th>
+  							</tr>
+  							<tr ng-model="allOrgApts" ng-repeat="apt in allOrgApts">
+  								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+  								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+  								<td><h5>{{apt.title}}</h5></td>
+  								<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+  								<td><h5>{{apt.loc}}</h5></td>
+  								<td><h5>{{apt.status}}</h5></td>
+  							</tr>
+  						</table>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
 </div>
 
 

@@ -130,7 +130,12 @@ table {
 .create-orgs-contain, .my-orgs-contain, .join-orgs-contain {
 	margin: 0 auto;
 	width: 85%;
+}
 
+/*create appointment page*/
+.createAptPanelTable {
+	height: 287px;
+	overflow-y: auto;
 }
 
 /*org management*/
@@ -326,6 +331,14 @@ body {
 	}
 }
 
+@media (min-width: 768px) and (max-width: 1170px) {
+	/*create appointment page*/
+	.createAptPanelTable {
+		height: 311px;
+		overflow-y: auto;
+	}
+}
+
 @media (max-width: 992px) {
 	.rightViewContent {
 		z-index: 300;
@@ -362,7 +375,6 @@ body {
 	.mainMenuSettings {
 		min-height: 90% !important;
 	}
-
 
 	/*sweet alert stuff*/
 

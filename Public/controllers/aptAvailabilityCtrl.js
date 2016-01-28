@@ -1,9 +1,36 @@
-angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $state, aptService, mainService){
+angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $state, aptService, mainService, skedAptService, allOrgApptRef){
 
 	//spinning loading animation
 	$scope.stuffLoaded = false;
 	$scope.notLoaded = true;
 
+	// get all organization appointments part
+	$scope.allOrgApts = allOrgApptRef;
+
+	$scope.getOrg = function(orgID){
+    skedAptService.getOrg(orgID).then(function(result){
+      $scope.thisOrg = result;
+    });
+  };
+  $scope.getOrg($state.params.id);
+
+	$scope.showUserInfo = function(user){
+    swal({
+      title: user.firstName + " " + user.lastName,
+      text: "<h4>About: </h4>" + user.desc +
+        "<br> <h4>Company: </h4>" + user.company +
+        "<br> <h4>Job Title: </h4>" + user.title +
+        "<br> <h4>Specialities: </h4>" + user.specialities +
+        "<br> <h4>LinkedIn: </h4>" + user.linkedin +
+        "<br> <h4>Facebook: </h4>" + user.facebook +
+        "<br> <h4>Twitter: </h4>" + user.twitter,
+      html: true,
+      allowEscapeKey: true,
+      allowOutsideClick: true,
+    })
+  }
+
+	// create and delete appointments part
 	$scope.createApt = function(newApt, orgID, userID){
         // console.log(new Date(moment($('#datetimepicker6').data("DateTimePicker").date()).toDate()));
         $scope.newApt.startsAt = new Date(moment($('#datetimepicker6').data("DateTimePicker").date()).toDate());
@@ -52,6 +79,7 @@ angular.module("skedApp").controller("aptAvailabilityCtrl", function($scope, $st
 			if(isConfirm){
 				aptService.removeOpenApt(aptID, $state.params.id).then(function(){
 					$scope.getMyOpenApts($state.params.id, $scope.user._id)
+					$state.reload(true);
 				});
 			};
 		});
