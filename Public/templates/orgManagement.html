@@ -3,8 +3,8 @@
 	<circle-spinner ng-show="notLoaded"></circle-spinner>
 	<div ng-show="stuffLoaded" class=" join-orgs-contain">
 		<div class="row">
-			<div class="panel panel-primary">
-	            <div class="panel-heading"><h2 class="white-title-text">All {{currentOrg.name}} users</h2></div>
+			<div class="panel panel-info">
+	            <div class="panel-heading"><h2>Member Management</h2></div>
 	            <div class="table-responsive">
 		            <table class="table table-striped table-hover">
 		                <tr>
@@ -22,76 +22,190 @@
 		            </table>
 	            </div>
 	        </div>
+		</div>
+      	<br>
+		<div class="row" ng-show="showAppts">
+			<br>
+			<div class="btn-group">
+		    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>
+		    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar</button>
 			</div>
-      <br>
-	    <div class="row">
-	    	<div class="panel panel-primary">
-	            <div class="panel-heading"><h2 class="white-title-text">User Statistics</h2></div>
-	            <div class="table-responsive">
-		            <table class="table table-striped table-hover">
-		                <tr>
-		                    <th># of Users</th>
-		                    <th>Admins</th>
-		                    <th>Mentors</th>
-		                    <th>Users</th>
-		                </tr>
-		                <tr>
-		                    <td>{{currentOrg.members.length}}</td>
-		                    <td>{{currentOrg.numAdmins}}</td>
-		                    <td>{{currentOrg.numMentors}}</td>
-		                    <td>{{currentOrg.numUsers}}</td>
-		                </tr>
-		            </table>
-	            </div>
-	        </div>
-	    </div>
+		    	<button class="btn btn-primary pull-right" ng-click="showAppts = !showAppts">Hide Appointments</button>
+			<br>
+			<div ng-show="calendarMode">
+				<calendar-directive apt="allTheThings"></calendar-directive>
+			</div>
+			<br>
+			<div ng-show="listMode">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2>All appointments</h2>
+						<div class="btn-group">
+                        	<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'Left'" ng-click="allAptView('allApts')">All</button>
+		    				<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'midLeft'" ng-click="allAptView('open')">Open</button>
+		    				<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'midRight'" ng-click="allAptView('booked')">Booked</button>
+		    				<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'Right'" ng-click="allAptView('completed')">Completed</button>
+		    				<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'farRight'" ng-click="allAptView('past')">Past</button>
+                    	</div>
+					</div>
+					<div  class="panel-body aptPanelTable">
+						<div class="table-responsive">
+							<table class="table table-hover table-striped">
+								<tr>
+									<th class="col-sm-3">Day</th>
+									<th class="col-sm-3">Time</th>
+									<th class="col-sm-3">Mentor</th>
+									<th class="col-sm-3">Status</th>
+								</tr>
+								<tr ng-if="allApts" ng-model="allTheThings" ng-repeat="apt in allTheThings">
+									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td><h5>{{apt.status}}</h5></td>
+								</tr>
+								<tr ng-if="open" ng-show="apt.status === 'open'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
+									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td><h5>{{apt.status}}</h5></td>
+								</tr>
+								<tr ng-if="booked" ng-show="apt.status === 'booked'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
+									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td><h5>{{apt.status}}</h5></td>
+								</tr>
+								<tr ng-if="completed" ng-show="apt.status === 'completed'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
+									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td><h5>{{apt.status}}</h5></td>
+								</tr>
+								<tr ng-if="past" ng-show="apt.status === 'past'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
+									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
+									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td><h5>{{apt.status}}</h5></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      	<div class="row">
+		    <div class="panel panel-info">
+		        <div class="panel-heading"><h2>Statistics</h2></div>
+		        <div class="panel-body">
+			        <div class="col-sm-6">
+				    	<div class="panel panel-default">
+				            <div class="panel-heading"><h4>Members</h4></div>
+				            <div class="table-responsive">
+					            <table class="table table-striped table-hover">
+					                <tr>
+					                    <th>Admins</th>
+					                    <td>{{currentOrg.numAdmins}}</td>
+					                </tr>
+					                 <tr>
+					                    <th>Mentors</th>
+					                    <td>{{currentOrg.numMentors}}</td>
+					                </tr>
+					                <tr>
+					                    <th>Members</th>
+					                    <td>{{currentOrg.numUsers}}</td>
+					                </tr>
+					                <tr>
+					                    <th>Total # of Members</th>
+					                    <td>{{currentOrg.members.length}}</td>
+					                </tr>
+					            </table>
+				            </div>
+				        </div>
+				    </div>
+			        <div class="col-sm-6">
+				    	<div class="panel panel-default">
+				            <div class="panel-heading"><h4>Appointments<button class="pull-right btn btn-sm btn-info" ng-click="showAppts = !showAppts">Show All</button></h4></div>
+				            <div class="table-responsive">
+					            <table class="table table-striped table-hover">
+					                <tr>
+					                    <th>Open Appointments</th>
+					                    <td>{{orgApts.open}}</td>
+					                </tr>
+					                <tr>
+					                    <th>Booked Appointments</th>
+					                    <td>{{orgApts.booked}}</td>
+					                </tr>
+					                <tr>
+					                    <th>Completed Appointments</th>
+					                    <td>{{orgApts.completed}}</td>
+					                </tr>
+					                <tr>
+					                    <th>Past Appointments</th>
+					                    <td>{{orgApts.past}}</td>
+					                </tr>
+					            </table>
+				            </div>
+				        </div>
+				    </div>
+		        </div>
+		    </div>
+      </div>
+	    <br>
 	    <br>
 	    <div class="row">
-	    	<div class="panel panel-primary">
-	            <div class="panel-heading"><h2 class="white-title-text">Appointment Statistics</h2></div>
-	            <div class="table-responsive">
-		            <table class="table table-striped table-hover">
-		                <tr>
-		                    <th>Open Apts</th>
-		                    <th>Booked Apts</th>
-		                    <th>Booked Past Apts</th>
-		                    <th>UnBooked Past Apts</th>
-		                </tr>
-		                <tr>
-		                    <td>{{orgApts.open}}</td>
-		                    <td>{{orgApts.booked}}</td>
-		                    <td>{{orgApts.completed}}</td>
-		                    <td>{{orgApts.past}}</td>
-		                </tr>
-		            </table>
-	            </div>
-	        </div>
-	    </div>
-	    <br>
-	    <div class="row">
-	    	<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h2 class="white-title-text">Organization Profile</h2>
-				</div>
-				<div class="panel-body">
-					<h4>Name: {{currentOrg.name}}</h4>
-					<h4>About: {{currentOrg.desc}}</h4>
-					<h4>Location: {{currentOrg.add1}} {{currentOrg.add2}} {{currentOrg.city}}, {{currentOrg.st}} {{currentOrg.zip}}</h4>
-					<h4>LinkedIn: {{currentOrg.linkedin}}</h4>
-					<h4>Facebook: {{currentOrg.facebook}}</h4>
-					<h4>Twitter: {{currentOrg.twitter}}</h4>
-					<button class="btn btn-sm btn-danger pull-right" ng-click="deactivateOrg(currentOrg._id)">Deactivate Org</button>
-					<button class="btn btn-sm btn-primary pull-right" ng-click="showEdit = !showEdit">Edit Profile</button>
-				</div>
-			</div>
 			<div ng-show="showEdit" class="panel panel-info">
 				<div class="panel-heading">
-					<h2 class="white-title-text">Update Organization Profile</h2>
+					<h2>Update Organization Profile<button class="pull-right btn btn-sm btn-primary" ng-click="showEdit = !showEdit">Cancel</button></h2>
 				</div>
 				<div class="panel-body">
 					<form>
 						<div class="form-group">
 							<input ng-model="orgUpdateData.name" class="form-control" placeholder="Org Name">
+						</div>
+						<div class="form-group">
+							<select id="orgCategory" name="orgCategory" class="form-control" ng-model="newOrg.category">
+								<option value="">Choose a category</option>
+								<option value="Aerospace/Defense">Aerospace/Defense</option>
+								<option value="Automobiles and Parts">Automobiles and Parts</option>
+								<option value="Bank/Financial Institution">Bank/Financial Institution</option>
+								<option value="Biotechnology">Biotechnology</option>
+								<option value="Cause">Cause</option>
+								<option value="Chemicals">Chemicals</option>
+								<option value="Church/Religious Organization">Church/Religious Organization</option>
+								<option value="Community Organization">Community Organization</option>
+								<option value="Company">Company</option>
+								<option value="Computers/Technology">Computers/Technology</option>
+								<option value="Consulting/Business Services">Consulting/Business Services</option>
+								<option value="Education">Education</option>
+								<option value="Elementary School">Elementary School</option>
+								<option value="Energy/Utility">Energy/Utility</option>
+								<option value="Engineering/Construction">Engineering/Construction</option>
+								<option value="Farming/Agriculture">Farming/Agriculture</option>
+								<option value="Food/Beverages">Food/Beverages</option>
+								<option value="Government Organization">Government Organization</option>
+								<option value="Health/Beauty">Health/Beauty</option>
+								<option value="Health/Medical/Pharmaceuticals">Health/Medical/Pharmaceuticals</option>
+								<option value="Industrials">Industrials</option>
+								<option value="Insurance Company">Insurance Company</option>
+								<option value="Internet/Software">Internet/Software</option>
+								<option value="Legal/Law">Legal/Law</option>
+								<option value="Media/News/Publishing">Media/News/Publishing</option>
+								<option value="Middle School">Middle School</option>
+								<option value="Mining/Materials">Mining/Materials</option>
+								<option value="Non-Governmental Organization (NGO)">Non-Governmental Organization (NGO)</option>
+								<option value="Non-Profit Organization">Non-Profit Organization</option>
+								<option value="Organization">Organization</option>
+								<option value="Political Organization">Political Organization</option>
+								<option value="Political Party">Political Party</option>
+								<option value="Preschool">Preschool</option>
+								<option value="Retail and Consumer Merchandise">Retail and Consumer Merchandise</option>
+								<option value="School">School</option>
+								<option value="Small Business">Small Business</option>
+								<option value="Telecommunication">Telecommunication</option>
+								<option value="Transport/Freight">Transport/Freight</option>
+								<option value="Travel/Leisure">Travel/Leisure</option>
+								<option value="University">University</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<textarea ng-model="orgUpdateData.desc" class="form-control" placeholder="About Org..."></textarea>
@@ -124,6 +238,21 @@
 							<button class=" btn btn-sm btn-primary login-button" type="submit" ng-click="updateOrg(orgUpdateData); showEdit = !showEdit">Save Changes</button>
 						</div>
 					</form>
+				</div>
+			</div>
+	    	<div class="panel panel-info">
+				<div class="panel-heading">
+					<h2>Organization Profile</h2>
+				</div>
+				<div class="panel-body">
+					<h4>Name: {{currentOrg.name}}</h4>
+					<h4>About: {{currentOrg.desc}}</h4>
+					<h4>Location: {{currentOrg.add1}} {{currentOrg.add2}} {{currentOrg.city}}, {{currentOrg.st}} {{currentOrg.zip}}</h4>
+					<h4>LinkedIn: {{currentOrg.linkedin}}</h4>
+					<h4>Facebook: {{currentOrg.facebook}}</h4>
+					<h4>Twitter: {{currentOrg.twitter}}</h4>
+					<button class="btn btn-sm btn-danger pull-right" ng-click="deactivateOrg(currentOrg._id)">Deactivate Org</button>
+					<button class="btn btn-sm btn-primary pull-right" ng-click="showEdit = !showEdit">Edit Profile</button>
 				</div>
 			</div>
 		</div>
