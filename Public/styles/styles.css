@@ -148,6 +148,10 @@ table {
 .blockedUser {
 	text-decoration: line-through;
 }
+.aptPanelTable {
+	height: 475px;
+	overflow-y: auto;
+}
 
 /*.body {
 	height: 100vh;
