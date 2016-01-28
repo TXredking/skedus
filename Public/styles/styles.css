@@ -168,6 +168,21 @@ body {
   background-size: cover !important;
 }
 
+/*no book appointment message*/
+.noBookedApt {
+	text-align: center;
+	margin-top: 6em;
+}
+.noBookedApt h1 {
+	font-family: monospace;
+	opacity: 0.4;
+}
+
+/*check for current appointments before booking*/
+.checkCurrentAptMessage {
+		text-align: center;
+		opacity: 0.8;
+}
 
 /*calendar directive*/
 .calendarPanelHeading {
