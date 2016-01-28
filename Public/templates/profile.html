@@ -2,14 +2,14 @@
 	<div class="my-orgs-contain">
 		<br>
 		<div class="btn-group">
-			<button class="btn btn-primary" ui-sref="auth.joinOrg">Join Organization</button>
-			<button class="btn btn-primary" ui-sref="auth.createOrg">Create Organization</button>
+			<button class="btn btn-success" ui-sref="auth.joinOrg">Join Organization</button>
+			<button class="btn btn-success" ui-sref="auth.createOrg">Create Organization</button>
 		</div>
 		<br>
 		<br>
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2>My Profile</h2>
+				<h2 class="white-title-text">My Profile</h2>
 			</div>
 			<div class="panel-body">
 				<div ng-if="!user.linkedinToken" id="add-linkedin-contain">
@@ -24,9 +24,9 @@
 				<button class="btn btn-sm btn-danger pull-right" ng-click="deactivateUser(user._id)">Deactivate Account</button><button class="btn btn-sm btn-primary pull-right" ng-click="showEdit = !showEdit">Edit Profile</button>
 			</div>
 		</div>
-		<div ng-show="showEdit" class="panel panel-info">
+		<div ng-show="showEdit" class="panel panel-success">
 			<div class="panel-heading">
-				<h2>Update Profile Here</h2>
+				<h2 class="white-title-text">Update {{user.firstName}}'s personal profile<button class=" btn btn-sm btn-warning login-button" type="submit" ng-click="showEdit = !showEdit">Cancel</button></h2>
 			</div>
 			<div class="panel-body">
 				<form>
@@ -49,13 +49,13 @@
 						<input ng-model="userUpdates.specialities" class="form-control" placeholder="Specialties">
 					</div>
 					<div class="form-group">
-						<button class=" btn btn-sm btn-primary login-button" type="submit" ng-click="updateUser(userUpdates); showEdit = !showEdit">Save Changes</button>
+						<button class=" btn btn-sm btn-success login-button" type="submit" ng-click="updateUser(userUpdates); showEdit = !showEdit">Save Changes</button>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="panel panel-info">
-			<div class="panel-heading"><h1>My Organizations</h1></div>
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h2 class="white-title-text">My Organizations</h2></div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-hover table-striped">
@@ -65,7 +65,7 @@
 							<th class="col-sm-6"> </th>
 						</tr>
 						<tr ng-repeat="org in myOrgs" ng-if="org.org.status === 'Active'">
-							<td class="pointer" ng-click="showOrgInfo(org.org)">{{org.org.name}}</td>
+							<td class="pointer clickableLink" ng-click="showOrgInfo(org.org)"><strong>{{org.org.name}}</strong></td>
 							<td>{{org.org.add1}} {{org.org.add2}} {{org.org.city}} {{org.org.st}} {{org.org.zip}}</td>
 							<td class="pull-right"><button class="btn btn-sm btn-info" ng-click="showOrgInfo(org.org)">Info</button><button class="btn btn-sm btn-danger" ng-click="leaveOrg(org)">Leave</button></td>
 						</tr>

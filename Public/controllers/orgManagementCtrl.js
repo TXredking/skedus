@@ -339,12 +339,12 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 		}
 	};
 
-	$scope.showInfo = function(user){
+	$scope.showUserInfo = function(user){
 		swal({
 			title: user.firstName + " " + user.lastName,
 			text: "<h4>About: </h4>" + user.desc +
-				"<br><h4>Email: </h4>" + user.email + 
-				"<br><h4>Company: </h4>" + user.company + 
+				"<br><h4>Email: </h4>" + user.email +
+				"<br><h4>Company: </h4>" + user.company +
 				"<br><h4>Job Title: </h4>" + user.title +
 				"<br><h4>Specialities: </h4>" + user.specialities +
 				"<br><h4>LinkedIn: </h4>" + user.linkedin +

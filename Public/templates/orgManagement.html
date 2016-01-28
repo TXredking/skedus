@@ -3,8 +3,8 @@
 	<circle-spinner ng-show="notLoaded"></circle-spinner>
 	<div ng-show="stuffLoaded" class=" join-orgs-contain">
 		<div class="row">
-			<div class="panel panel-info">
-	            <div class="panel-heading"><h2>Member Management</h2></div>
+			<div class="panel panel-primary">
+	            <div class="panel-heading"><h2 class="white-title-text">Member Management</h2></div>
 	            <div class="table-responsive">
 		            <table class="table table-striped table-hover">
 		                <tr>
@@ -13,7 +13,7 @@
 		                    <th class="col-sm-6"> </th>
 		                </tr>
 		                <tr ng-repeat="user in orgUsers | orderBy: user.userid.lastName">
-		                    <td class="pointer" ng-click="showInfo(user.userid)"><h5 ng-class="{'blockedUser': user.role === 'Blocked'}">{{user.userid.lastName}}, {{user.userid.firstName}}</h5></td>
+		                    <td class="pointer" ng-click="showUserInfo(user.userid)"><h5 ng-class="{'blockedUser': user.role === 'Blocked'}" class="clickableLink">{{user.userid.lastName}}, {{user.userid.firstName}}</h5></td>
 		                    <td><h5 ng-class="{'blockedUser': user.role === 'Blocked'}">{{user.userid.email}}</h5></td>
 		                    <td class="pull-right">
 		                    	<button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="makeAdmin(user.userid._id, user.role)" >Admin</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'Mentor'}" ng-click="makeMentor(user.userid._id, user.role)" >Mentor</button><button class="btn btn-sm btn-primary org-role" ng-class="{'disabled': user.role === 'User'}" ng-click="makeUser(user.userid._id, user.role)" >User</button><button class="btn btn-sm btn-warning org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="removeUser(user.userid._id, user.role)" >Remove</button><button ng-if="user.role !== 'Blocked'" class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="blockUser(user.userid._id, user.role)" >Block</button><button ng-if="user.role === 'Blocked'" class="btn btn-sm btn-danger org-role" ng-class="{'disabled': user.role === 'Admin'}" ng-click="unblockUser(user.userid._id, user.role)" >UnBlock</button>
@@ -27,8 +27,8 @@
 		<div class="row" ng-show="showAppts">
 			<br>
 			<div class="btn-group">
-		    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List</button>
-		    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar</button>
+		    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List View</button>
+		    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar View</button>
 			</div>
 		    	<button class="btn btn-primary pull-right" ng-click="showAppts = !showAppts">Hide Appointments</button>
 			<br>
@@ -37,9 +37,9 @@
 			</div>
 			<br>
 			<div ng-show="listMode">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h2>All appointments</h2>
+				<div class="panel">
+					<div class="panel-heading calendarPanelHeading">
+						<h2 class="white-title-text">All {{currentOrg.name}} appointments</h2>
 						<div class="btn-group">
                         	<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'Left'" ng-click="allAptView('allApts')">All</button>
 		    				<button type="radio" class="btn btn-primary" ng-model="allAptRadio" uib-btn-radio="'midLeft'" ng-click="allAptView('open')">Open</button>
@@ -94,12 +94,12 @@
 			</div>
 		</div>
       	<div class="row">
-		    <div class="panel panel-info">
-		        <div class="panel-heading"><h2>Statistics</h2></div>
+		    <div class="panel panel-primary">
+		        <div class="panel-heading"><h2 class="white-title-text">Statistics</h2></div>
 		        <div class="panel-body">
 			        <div class="col-sm-6">
-				    	<div class="panel panel-default">
-				            <div class="panel-heading"><h4>Members</h4></div>
+				    	<div class="panel panel-info">
+				            <div class="panel-heading"><h4><strong>Members</strong></h4></div>
 				            <div class="table-responsive">
 					            <table class="table table-striped table-hover">
 					                <tr>
@@ -123,8 +123,8 @@
 				        </div>
 				    </div>
 			        <div class="col-sm-6">
-				    	<div class="panel panel-default">
-				            <div class="panel-heading"><h4>Appointments<button class="pull-right btn btn-sm btn-info" ng-click="showAppts = !showAppts">Show All</button></h4></div>
+				    	<div class="panel panel-info">
+				            <div class="panel-heading"><h4><strong>Appointments</strong><button class="pull-right btn btn-sm btn-primary" ng-click="showAppts = !showAppts">Show All</button></h4></div>
 				            <div class="table-responsive">
 					            <table class="table table-striped table-hover">
 					                <tr>
@@ -153,9 +153,9 @@
 	    <br>
 	    <br>
 	    <div class="row">
-			<div ng-show="showEdit" class="panel panel-info">
+			<div ng-show="showEdit" class="panel panel-success">
 				<div class="panel-heading">
-					<h2>Update Organization Profile<button class="pull-right btn btn-sm btn-primary" ng-click="showEdit = !showEdit">Cancel</button></h2>
+					<h2 class="white-title-text">Update {{currentOrg.name}} Profile<button class="pull-right btn btn-sm btn-warning" ng-click="showEdit = !showEdit">Cancel</button></h2>
 				</div>
 				<div class="panel-body">
 					<form>
@@ -235,14 +235,14 @@
 							<input ng-model="orgUpdateData.twitter" class="form-control" placeholder="Link to Twitter">
 						</div>
 						<div class="form-group">
-							<button class=" btn btn-sm btn-primary login-button" type="submit" ng-click="updateOrg(orgUpdateData); showEdit = !showEdit">Save Changes</button>
+							<button class=" btn btn-sm btn-success login-button" type="submit" ng-click="updateOrg(orgUpdateData); showEdit = !showEdit">Save Changes</button>
 						</div>
 					</form>
 				</div>
 			</div>
-	    	<div class="panel panel-info">
+	    	<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h2>Organization Profile</h2>
+					<h2 class="white-title-text">{{currentOrg.name}} Profile</h2>
 				</div>
 				<div class="panel-body">
 					<h4>Name: {{currentOrg.name}}</h4>

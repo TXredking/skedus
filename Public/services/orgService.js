@@ -40,7 +40,7 @@ angular.module("skedApp").service("orgService", function($http, $q){
 			url: "/api/apt/" + orgID,
 		}).then(function(results){
 			var aptResults = results.data
-			console.log("get all apts", results.data);
+			// console.log("get all apts", results.data);
 			for (var i = aptResults.length - 1; i >= 0; i--) {
 				if (aptResults[i].status === "past" || aptResults[i].status === "completed") {
 					aptResults.splice(i, 1);
@@ -64,6 +64,11 @@ angular.module("skedApp").service("orgService", function($http, $q){
 			url: "/api/apt/" + orgID,
 		}).then(function(results){
 			var aptResults = results.data
+			for (var i = aptResults.length - 1; i >= 0; i--) {
+				if (aptResults[i].mentor._id === userID) {
+					aptResults[i].type = "important";
+				}
+			}
 			dfd.resolve(results.data);
 		});
 		return dfd.promise;
