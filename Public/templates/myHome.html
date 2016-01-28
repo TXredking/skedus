@@ -13,6 +13,11 @@
 
 		<div ng-show="listMode" class="">
 			<br>
+
+			<div class="noBookedApt" ng-if="!allMyMenteeApts[0] && !allMyMentorApts[0]">
+				<h1>You currently do not have any booked appointments.</h1>
+			</div>
+
 			<div ng-if="allMyMenteeApts[0]" class="panel">
 				<div class="panel-heading panel-attending"><h2 class="white-title-text">{{user.firstName}}'s Attending Appointments</h2></div>
 				<div class="panel-body">

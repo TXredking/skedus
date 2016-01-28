@@ -65,12 +65,17 @@
       </div>
     </div>
 
+    <div class="checkCurrentAptMessage">
+        <span class="glyphicon glyphicon-chevron-down"></span>Please check below for all current {{thisOrg.name}} appointments.<span class="glyphicon glyphicon-chevron-down"></span>
+    </div>
+
+    <br>
     <div class="my-orgs-contain">
   		<div class="btn-group">
   	    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Left'" ng-click="aptView('listMode')">List View</button>
   	    	<button class="btn btn-primary" ng-model="aptRadio" uib-btn-radio="'Right'" ng-click="aptView('calendarMode')">Calendar View</button>
   		</div>
-  		<br>
+      <br>
   		<div ng-show="calendarMode">
   			<calendar-directive apt="allOrgApts"></calendar-directive>
   		</div>
