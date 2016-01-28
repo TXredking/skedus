@@ -93,7 +93,7 @@
   								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
   								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
   								<td><h5>{{apt.title}}</h5></td>
-  								<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+  								<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5 class="clickableLink">{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
   								<td><h5>{{apt.loc}}</h5></td>
   								<td><h5>{{apt.status}}</h5></td>
   							</tr>

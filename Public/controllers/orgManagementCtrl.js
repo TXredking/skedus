@@ -63,7 +63,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 
 	$scope.getOrgUsers = function(orgID){
 		orgService.getOrgUsers(orgID).then(function(results){
-			console.log("results:", results)
+			// console.log("results:", results)
 			$scope.orgUsers = results;
 
 			//cancels circle spinner and unhide loaded view
@@ -118,7 +118,7 @@ angular.module("skedApp").controller("orgManagementCtrl", function($scope, $stat
 			results.completed = numCompleted;
 			results.past = numPast;
 			$scope.orgApts = results;
-			console.log("orgApts: ", $scope.orgApts)
+			// console.log("orgApts: ", $scope.orgApts)
 		});
 	};
 	$scope.getOrgApts($state.params.id);

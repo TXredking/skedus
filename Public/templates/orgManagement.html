@@ -60,31 +60,31 @@
 								<tr ng-if="allApts" ng-model="allTheThings" ng-repeat="apt in allTheThings">
 									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5 class="clickableLink">{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
 									<td><h5>{{apt.status}}</h5></td>
 								</tr>
 								<tr ng-if="open" ng-show="apt.status === 'open'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
 									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5 class="clickableLink">{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
 									<td><h5>{{apt.status}}</h5></td>
 								</tr>
 								<tr ng-if="booked" ng-show="apt.status === 'booked'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
 									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5 class="clickableLink">{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
 									<td><h5>{{apt.status}}</h5></td>
 								</tr>
 								<tr ng-if="completed" ng-show="apt.status === 'completed'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
 									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5 class="clickableLink">{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
 									<td><h5>{{apt.status}}</h5></td>
 								</tr>
 								<tr ng-if="past" ng-show="apt.status === 'past'" ng-model="allTheThings" ng-repeat="apt in allTheThings">
 									<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 									<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
-									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5>{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
+									<td class="pointer" ng-click="showUserInfo(apt.mentor)"><h5 class="clickableLink">{{apt.mentor.firstName}} {{apt.mentor.lastName}}</h5></td>
 									<td><h5>{{apt.status}}</h5></td>
 								</tr>
 							</table>

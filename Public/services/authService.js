@@ -30,10 +30,10 @@ angular.module("skedApp").service("authService", function($http, $q, $state, $ro
       url: '/api/auth/local',
       data: credentials
     }).then(function(res){
-      console.log('Result from user login', res)
+      // console.log('Result from user login', res)
       dfd.resolve(res);
     }).catch(function(res) {
-      console.log("cannot login", res);
+      // console.log("cannot login", res);
        if(res.status !== 200){
         swal({
           title: "Email and Password combination not found",
@@ -68,13 +68,13 @@ angular.module("skedApp").service("authService", function($http, $q, $state, $ro
         url: '/api/users/currentUser'
       }).then(function(res){
         user = res.data;
-        console.log('Result getting the logged in user', res);
+        // console.log('Result getting the logged in user', res);
         dfd.resolve(user);
       })
     }
     return dfd.promise;
   };
-	// 
+	//
 	// this.getRandomUser = function() {
 	// 	console.log('Yo Mama!');
 	// 	var dfd = $q.defer();
