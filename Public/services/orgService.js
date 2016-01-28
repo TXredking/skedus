@@ -57,6 +57,18 @@ angular.module("skedApp").service("orgService", function($http, $q){
 		return dfd.promise;
 	};
 
+	this.getAllTheThings = function(orgID, userID){
+		var dfd = $q.defer();
+		$http({
+			method: "GET",
+			url: "/api/apt/" + orgID,
+		}).then(function(results){
+			var aptResults = results.data
+			dfd.resolve(results.data);
+		});
+		return dfd.promise;
+	};
+
 	this.updateOrg = function(orgID, updateData){
 		var dfd = $q.defer();
 		$http({

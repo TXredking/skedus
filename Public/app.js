@@ -93,7 +93,12 @@ angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnima
 		.state("auth.orgManagement", {
 			url: "/org/management/:id",
 			controller: "orgManagementCtrl",
-			templateUrl: "templates/orgManagement.html"
+			templateUrl: "templates/orgManagement.html",
+			resolve: {
+				allTheThings: function(orgService, $stateParams, user) {
+					return orgService.getAllTheThings($stateParams.id, user._id);
+				}
+			}
 		})
 		.state("auth.aptAvailability", {
 			url: "/create_appointment/:id",

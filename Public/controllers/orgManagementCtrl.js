@@ -1,8 +1,65 @@
-angular.module("skedApp").controller("orgManagementCtrl", function($scope, $state, orgService){
+angular.module("skedApp").controller("orgManagementCtrl", function($scope, $state, orgService, allTheThings){
 
 	//spinning loading animation
 	$scope.stuffLoaded = false;
 	$scope.notLoaded = true;
+
+	$scope.allTheThings = allTheThings;
+
+
+	$scope.allAptView = function(view) {
+		switch (view) {
+			case "allApts":
+				$scope.allApts = true;
+				$scope.open = false;
+				$scope.booked = false;
+				$scope.completed = false;
+				$scope.past = false;
+				$scope.allAptRadio = 'Left';
+				break;
+			case "open":
+				$scope.allApts = false;
+				$scope.open = true;
+				$scope.booked = false;
+				$scope.completed = false;
+				$scope.past = false;
+				$scope.allAptRadio = 'midLeft';
+				break;
+			case "booked":
+				$scope.allApts = false;
+				$scope.open = false;
+				$scope.booked = true;
+				$scope.completed = false;
+				$scope.past = false;
+				$scope.allAptRadio = 'midRight';
+				break;
+			case "completed":
+				$scope.allApts = false;
+				$scope.open = false;
+				$scope.booked = false;
+				$scope.completed = true;
+				$scope.past = false;
+				$scope.allAptRadio = 'Right';
+				break;
+			case "past":
+				$scope.allApts = false;
+				$scope.open = false;
+				$scope.booked = false;
+				$scope.completed = false;
+				$scope.past = true;
+				$scope.allAptRadio = 'farRight';
+				break;
+			default:
+				$scope.allApts = true;
+				$scope.open = false;
+				$scope.booked = false;
+				$scope.completed = false;
+				$scope.past = false;
+				$scope.allAptRadio = 'Left';
+		}
+	};
+	$scope.allAptView('');
+
 
 	$scope.getOrgUsers = function(orgID){
 		orgService.getOrgUsers(orgID).then(function(results){
