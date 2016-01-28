@@ -98,7 +98,12 @@ angular.module("skedApp", ["ui.router", 'mwl.calendar', 'ui.bootstrap', 'ngAnima
 		.state("auth.aptAvailability", {
 			url: "/create_appointment/:id",
 			controller: "aptAvailabilityCtrl",
-			templateUrl: "templates/aptAvailability.html"
+			templateUrl: "templates/aptAvailability.html",
+			resolve: {
+				allOrgApptRef: function(orgService, $stateParams, user) {
+					return orgService.getAllOrgApts($stateParams.id, user._id);
+				}
+			}
 		})
 
 		.state("auth.userManage", {
