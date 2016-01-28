@@ -1,8 +1,9 @@
 <div class="container-fluid">
-	<div class=" join-orgs-contain">
+	<circle-spinner ng-show="notLoaded"></circle-spinner>
+	<div ng-show="stuffLoaded" class="join-orgs-contain">
 		<br>
 		<div class="panel panel-primary">
-	        <div class="panel-heading"><h1 class="white-title-text">{{currentOrg.name}}</h1></div>
+	        <div class="panel-heading"><h2 class="white-title-text">{{currentOrg.name}}</h2></div>
 	        <div class="panel-body">
 				<h4>About: {{currentOrg.desc}}</h4>
 				<h4>Location: {{currentOrg.add1}} {{currentOrg.add2}} {{currentOrg.city}}, {{currentOrg.st}} {{currentOrg.zip}}</h4>
@@ -12,7 +13,7 @@
 	        </div>
 		</div>
 		<div class="panel panel-primary">
-			<div class="panel-heading"><h2 class="white-title-text">Organization Members</h2></div>
+			<div class="panel-heading"><h2 class="white-title-text">{{currentOrg.name}} Members</h2></div>
 			<div class="panel-body">
 				<div class="table-responsive">
 		            <table class="table table-striped table-hover">
@@ -21,7 +22,7 @@
 		                    <th> </th>
 		                </tr>
 		                <tr ng-repeat="user in orgUsers | orderBy: user.userid.lastName">
-		                    <td  class="pointer" ng-click="showUserInfo(user.userid)"><h5>{{user.userid.lastName}}, {{user.userid.firstName}}</h5>
+		                    <td  class="pointer" ng-click="showUserInfo(user.userid)"><h5 class="clickableLink">{{user.userid.lastName}}, {{user.userid.firstName}}</h5>
 		                    </td>
 		                    <td> </td>
 		                </tr>

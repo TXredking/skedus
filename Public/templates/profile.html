@@ -9,7 +9,7 @@
 		<br>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2 class="white-title-text">My Profile</h2>
+				<h2 class="white-title-text">{{user.firstName}}'s Profile</h2>
 			</div>
 			<div class="panel-body">
 				<div ng-if="!user.linkedinToken" id="add-linkedin-contain">
@@ -55,12 +55,12 @@
 			</div>
 		</div>
 		<div class="panel panel-primary">
-			<div class="panel-heading"><h2 class="white-title-text">My Organizations</h2></div>
+			<div class="panel-heading"><h2 class="white-title-text">{{user.firstName}}'s Organizations</h2></div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-hover table-striped">
 						<tr>
-							<th class="col-sm-3">Org</th>
+							<th class="col-sm-3">Organization</th>
 							<th class="col-sm-3">Location</th>
 							<th class="col-sm-6"> </th>
 						</tr>

@@ -1,8 +1,16 @@
 angular.module("skedApp").controller("orgCtrl", function($scope, orgService, user, $state){
 
+	//spinning loading animation
+	$scope.stuffLoaded = false;
+	$scope.notLoaded = true;
+
 	$scope.getOrgUsers = function(orgID){
 		orgService.getOrgUsers(orgID).then(function(results){
 			$scope.orgUsers = results;
+
+			//cancels circle spinner and unhide loaded view
+			$scope.stuffLoaded = true;
+			$scope.notLoaded = false;
 		})
 	};
 	$scope.getOrgUsers($state.params.id);
@@ -18,7 +26,7 @@ angular.module("skedApp").controller("orgCtrl", function($scope, orgService, use
 		swal({
 			title: user.firstName + " " + user.lastName,
 			text: "<h4>About: </h4>" + user.desc +
-				"<br> <h4>Company: </h4>" + user.company + 
+				"<br> <h4>Company: </h4>" + user.company +
 				"<br> <h4>Job Title: </h4>" + user.title +
 				"<br> <h4>Specialities: </h4>" + user.specialities +
 				"<br> <h4>LinkedIn: </h4>" + user.linkedin +
