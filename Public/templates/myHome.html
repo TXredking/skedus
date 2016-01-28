@@ -14,7 +14,7 @@
 		<div ng-show="listMode" class="">
 			<br>
 			<div ng-if="allMyMenteeApts[0]" class="panel">
-				<div class="panel-heading panel-attending"><h2 class="white-title-text">Attending</h2></div>
+				<div class="panel-heading panel-attending"><h2 class="white-title-text">{{user.firstName}}'s Attending Appointments</h2></div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-hover table-striped">
@@ -28,14 +28,14 @@
 								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
 								<td><h5>{{apt.loc}}</h5></td>
-								<td class="pull-right"><button ng-click="moreMentorInfo(apt)" class="btn btn-sm btn-warning">Info</button><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-sm btn-info">Reschedule</button><button class="btn btn-sm btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
+								<td class="pull-right"><button ng-click="moreMentorInfo(apt)" class="btn btn-sm btn-warning">Mentor Info</button><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-sm btn-info">Reschedule</button><button class="btn btn-sm btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
 			<div ng-if="allMyMentorApts[0]" class="panel">
-				<div class="panel-heading panel-hosting"><h2 class="white-title-text">Hosting</h2></div>
+				<div class="panel-heading panel-hosting"><h2 class="white-title-text">{{user.firstName}}'s Hosting Appointments</h2></div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-hover table-striped">
@@ -49,7 +49,7 @@
 								<td><h5>{{apt.startsAt | date: "EEE, MMM d"}}</h5></td>
 								<td><h5>{{apt.startsAt | date: "shortTime"}} - {{apt.endsAt | date: "shortTime"}}</h5></td>
 								<td><h5>{{apt.loc}}</h5></td>
-								<td class="pull-right"><button ng-click="moreMenteeInfo(apt)" class="btn btn-sm btn-warning">Info</button><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-sm btn-info">Reschedule</button><button class="btn btn-sm btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
+								<td class="pull-right"><button ng-click="moreMenteeInfo(apt)" class="btn btn-sm btn-warning">Mentee Info</button><button ng-click="rescheduleApt(apt._id, apt.org._id)" class="btn btn-sm btn-info">Reschedule</button><button class="btn btn-sm btn-danger" ng-click="cancelApt(apt._id)">Cancel</button></td>
 							</tr>
 						</table>
 					</div>
