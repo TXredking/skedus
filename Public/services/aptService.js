@@ -1,7 +1,7 @@
 angular.module("skedApp").service('aptService', function($http, $q) {
 
   this.createApt = function(newApt, orgID, userID){
-    console.log("newApt:", newApt.endsAt)
+    // console.log("newApt:", newApt.endsAt)
     var dfd = $q.defer();
     $http({
       method: 'POST',

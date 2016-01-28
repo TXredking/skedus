@@ -191,6 +191,11 @@ body {
 	color: white;
 }
 
+/*clickable links*/
+.clickableLink {
+	color: #1f80da;
+}
+
 /*Navigation sidebar*/
 #navSidebar {
 	width: 250px;

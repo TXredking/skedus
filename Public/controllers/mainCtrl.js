@@ -9,8 +9,6 @@ $(document).ready(function(){
   //   $('#navSidebar').offcanvas("hide");
   // });
 
-
-
 });
 // ------------------------------------------
 
@@ -62,7 +60,7 @@ $(document).ready(function(){
 
 	$scope.getMyOrgs = function(userID){
 		mainService.getMyOrgs(userID).then(function(res){
-			console.log('res', res);
+			// console.log('res', res);
 			for(var i = res.length - 1; i >=0 ; i--){
 				if(res[i].role === "Blocked"){
 					res.splice(i,1)
@@ -127,7 +125,7 @@ $(document).ready(function(){
 					mainService.leaveOrg($scope.user._id, org.org._id).then(function(){
 						$scope.getMyOrgs($scope.user._id);
 						$scope.getMyMenteeBookedApts($scope.user._id);
-						console.log("no longer member or org :(");
+						// console.log("no longer member or org :(");
 					});
 				};
 			});
@@ -215,7 +213,7 @@ $(document).ready(function(){
 	};
 
 	$scope.rescheduleApt = function(aptID, orgID){
-		console.log("orgID", orgID)
+		// console.log("orgID", orgID)
 		swal({
 			title: "Are you sure you want to Reschedule Appointment?",
 			type: "warning",
@@ -236,7 +234,7 @@ $(document).ready(function(){
 	};
 
 	$scope.showOrgInfo = function(org){
-		console.log(org);
+		// console.log(org);
 		if (!org.desc) {
 			org.desc = "None";
 		};

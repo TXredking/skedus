@@ -5,9 +5,9 @@
 			<button class="btn btn-primary" ui-sref="auth.userProfile">Back to Settings</button>
 		</div>
 		<br>
-		<div class="panel panel-info row">
+		<div class="panel panel-success row">
 			<div class="panel-heading col-sm-12">
-				<h2 class="col-sm-6">Available Organizations</h2>
+				<h2 class="col-sm-6 white-title-text">Available Organizations</h2>
 				<br class="hidden-xs">
 				<div class="input-group col-sm-6">
 					<span class="input-group-addon" aria-describedby="sizing-addon2"><div class="glyphicon glyphicon-search"></div></span>
@@ -22,7 +22,7 @@
 						<th class="col-sm-3"> </th>
 					</tr>
 					<tr ng-repeat="org in orgs | filter:searchOrg | filter:searchOrg.category" >
-						<td class="pointer" ng-click="showOrgInfo(org)"><h4>{{org.name}}</h4></td>
+						<td class="pointer" ng-click="showOrgInfo(org)"><h4 class="clickableLink">{{org.name}}</h4></td>
 						<td><h5>{{org.add1}} {{org.add2}} {{org.city}} {{org.st}} {{org.zip}}</h5></td>
 						<td><h5>{{org.category}}</h5></td>
 						<td class="pull-right"><button class="btn btn-sm btn-info"ng-click="showOrgInfo(org)">Info</button><button class="btn btn-sm btn-success" ng-click="joinOrg(org)">Join</button></td>

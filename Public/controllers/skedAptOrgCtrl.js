@@ -16,7 +16,7 @@ angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, 
 
 	$scope.getOrgOpenApts = function(orgID){
 		skedAptService.getOrgOpenApts(orgID).then(function(results){
-			console.log("results", results)
+			// console.log("results", results)
 			$scope.orgApts = results;
 
 			//cancels circle spinner and unhide loaded view
@@ -50,7 +50,7 @@ angular.module("skedApp").controller("skedAptOrgCtrl", function($scope, $state, 
 		swal({
 			title: user.firstName + " " + user.lastName,
 			text: "<h4>About: </h4>" + user.desc +
-			    "<br> <h4>Company: </h4>" + user.company + 
+			    "<br> <h4>Company: </h4>" + user.company +
 				"<br> <h4>Job Title: </h4>" + user.title +
 				"<br> <h4>Specialities: </h4>" + user.specialities +
 				"<br> <h4>LinkedIn: </h4>" + user.linkedin +
