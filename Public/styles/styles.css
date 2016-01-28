@@ -164,6 +164,12 @@ body {
   background-size: cover !important;
 }
 
+
+/*calendar directive*/
+.calendarPanelHeading {
+	background-color: #56a3aa;
+}
+
 /*panels*/
 .panel-attending {
 	background-color: #68abc4;
@@ -174,7 +180,7 @@ body {
 }
 
 .panel-available {
-	background-color: #6aa768;
+	background-color: #789977;
 }
 
 .white-title-text {

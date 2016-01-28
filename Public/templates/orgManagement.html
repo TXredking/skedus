@@ -3,8 +3,8 @@
 	<circle-spinner ng-show="notLoaded"></circle-spinner>
 	<div ng-show="stuffLoaded" class=" join-orgs-contain">
 		<div class="row">
-			<div class="panel panel-info">
-	            <div class="panel-heading"><h2>All Org Users</h2></div>
+			<div class="panel panel-primary">
+	            <div class="panel-heading"><h2 class="white-title-text">All {{currentOrg.name}} users</h2></div>
 	            <div class="table-responsive">
 		            <table class="table table-striped table-hover">
 		                <tr>
@@ -25,8 +25,8 @@
 			</div>
       <br>
 	    <div class="row">
-	    	<div class="panel panel-info">
-	            <div class="panel-heading"><h2>User Statistics</h2></div>
+	    	<div class="panel panel-primary">
+	            <div class="panel-heading"><h2 class="white-title-text">User Statistics</h2></div>
 	            <div class="table-responsive">
 		            <table class="table table-striped table-hover">
 		                <tr>
@@ -47,8 +47,8 @@
 	    </div>
 	    <br>
 	    <div class="row">
-	    	<div class="panel panel-info">
-	            <div class="panel-heading"><h2>Appointment Statistics</h2></div>
+	    	<div class="panel panel-primary">
+	            <div class="panel-heading"><h2 class="white-title-text">Appointment Statistics</h2></div>
 	            <div class="table-responsive">
 		            <table class="table table-striped table-hover">
 		                <tr>
@@ -69,9 +69,9 @@
 	    </div>
 	    <br>
 	    <div class="row">
-	    	<div class="panel panel-info">
+	    	<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h2>Organization Profile</h2>
+					<h2 class="white-title-text">Organization Profile</h2>
 				</div>
 				<div class="panel-body">
 					<h4>Name: {{currentOrg.name}}</h4>
@@ -86,7 +86,7 @@
 			</div>
 			<div ng-show="showEdit" class="panel panel-info">
 				<div class="panel-heading">
-					<h2>Update Organization Profile</h2>
+					<h2 class="white-title-text">Update Organization Profile</h2>
 				</div>
 				<div class="panel-body">
 					<form>
