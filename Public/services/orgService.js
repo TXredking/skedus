@@ -68,6 +68,9 @@ angular.module("skedApp").service("orgService", function($http, $q){
 				if (aptResults[i].mentor._id === userID) {
 					aptResults[i].type = "important";
 				}
+				else {
+					aptResults[i].type = "warning";
+				}
 			}
 			dfd.resolve(results.data);
 		});
