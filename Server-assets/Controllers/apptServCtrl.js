@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Appt = require('../Models/apptSchema');
 var User = require('../Models/userSchema');
 var Org = require('../Models/orgSchema');
-var mandrillService = require('../Services/mandrillService');
+// var mandrillService = require('../Services/mandrillService');
 var clearAppts = require('../Cron/clearAppts.js');
 
 
@@ -73,8 +73,8 @@ module.exports = {
       appt.status = req.body.status;
       appt.save().then(function() {
         User.findById({_id: appt.mentor}).exec().then(function(mentor) {
-          mandrillService.apptConfirmMentee(appt, req.user, mentor);
-          mandrillService.apptConfirmMentor(appt, req.user, mentor);
+          // mandrillService.apptConfirmMentee(appt, req.user, mentor);
+          // mandrillService.apptConfirmMentor(appt, req.user, mentor);
           res.status(200).end();
         });
       });
@@ -88,8 +88,8 @@ module.exports = {
     Appt.findById({_id: req.params.aptID}).then(function(appt){
         User.findById({_id: appt.mentor}).exec().then(function(mentor) {
           User.findById({_id: appt.mentee}).exec().then(function(mentee) {
-            mandrillService.apptCancelMentee(appt, mentee, mentor);
-            mandrillService.apptCancelMentor(appt, mentee, mentor);
+            // mandrillService.apptCancelMentee(appt, mentee, mentor);
+            // mandrillService.apptCancelMentor(appt, mentee, mentor);
             appt.status = req.body.status;
             appt.mentee = req.body.mentee;
             console.log("appt:", appt)
