@@ -3,7 +3,7 @@ var Org = require('../Models/orgSchema');
 var User = require('../Models/userSchema');
 var faker = require('faker');
 var mandrillService = require('../Services/mandrillService');
-var rando;
+// var rando;
 
 module.exports = {
 
@@ -34,15 +34,16 @@ module.exports = {
   addUser: function(req, res) {
     // console.log("rando", rando);
     // console.log("addadd", req.body);
-    User.findOne({ email: req.body.email || rando.email }).exec().then(function(user) {
+    User.findOne({ email: req.body.email}).exec().then(function(user) {
       if (user) {
         return res.status(409).end();
       }
       user = new User(req.body);
       // console.log("addUser Before Save ", req.body);
-      user.save().then(function() {
-        mandrillService.emailVerify(user);
-      });
+      user.save()
+      // .then(function() {
+      //   mandrillService.emailVerify(user);
+      // });
         // console.log("addUser After Save", req.body);
         return res.status(201).end();
       });
@@ -138,21 +139,21 @@ module.exports = {
     });
   },
 
-  validateEmail: function(req, res) {
-    console.log("Clicked Email Verification Link", req.params);
-    User.findById({_id: req.params.userID}).exec().then(function(user){
-      if(!user) {
-        return res.status(404).end();
-      }
-      else {
-        user.validatedEmail = true;
-        user.save().then(function() {
-          mandrillService.welcomeEmail(user);
-          res.send(user.firstName + "'s email has been validated!");
-          return res.status(200).end();
-        });
-      }
-    });
-}
+//   validateEmail: function(req, res) {
+//     console.log("Clicked Email Verification Link", req.params);
+//     User.findById({_id: req.params.userID}).exec().then(function(user){
+//       if(!user) {
+//         return res.status(404).end();
+//       }
+//       else {
+//         user.validatedEmail = true;
+//         user.save().then(function() {
+//           mandrillService.welcomeEmail(user);
+//           res.send(user.firstName + "'s email has been validated!");
+//           return res.status(200).end();
+//         });
+//       }
+//     });
+// }
 
 };
